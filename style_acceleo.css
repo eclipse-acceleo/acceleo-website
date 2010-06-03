@@ -1,0 +1,226 @@
+#novaContent {
+	background: url("images/backgroundAcceleoEclipse.png") no-repeat white;
+	padding-top: 170px;
+}
+
+#introText p.left {
+	text-align: justify; 
+	width: 48%;
+	float: left;
+}
+
+#introText p.right {
+	text-align: justify; 
+	width: 48%;
+	float: right;
+}
+
+#feature_left {
+	text-align: justify;
+	float: left;
+	width: 30%;
+	margin-right: 3%;
+}
+
+#feature_middle {
+	text-align: justify;
+	float: left;
+	width: 30%;
+	margin-right: 3%
+}
+
+#feature_right {
+	text-align: justify;
+	float: left;
+	width: 30%;
+}
+
+#feature_total {
+	text-align: justify;
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-right: 3%;	
+}
+
+#feature_more {
+	text-align: justify;
+	float: left;
+	width: 30%;
+}
+	
+#primaryLinks {
+	position: relative;
+	left: 420px;
+	top: -170px;
+}
+#primaryLinks h3{
+	visibility: hidden;
+}
+
+#primaryLinks a {
+}
+
+#primaryLinks ul li {
+   display:block;
+   list-style-type:none;
+   background-color: red;
+   padding: 0;
+   margin: 0;
+}
+
+#primaryLinks a:hover {
+	text-decoration: none;
+}
+
+#primaryLinks a {
+   display: block;
+   height:77px; width:250px;
+   padding: 0;
+   margin: 20px;
+   text-indent: -9000px;
+   position: absolute;
+}
+
+#buttonDownload {
+   background:transparent url("images/buttonDownload.png") no-repeat 0 0;
+   top: 0px;
+   left: 0px;
+}
+
+#buttonDownload:hover {
+   background:transparent url("images/buttonDownload_sel.png") no-repeat 0 0;
+}
+
+   
+#buttonDocumentation {
+   background:transparent url("images/buttonDocumentation.png") no-repeat 0 0;
+   top: 87px;
+   left: 0px;
+}
+
+#buttonDocumentation:hover {
+   background:transparent url("images/buttonDocumentation_sel.png") no-repeat 0 0;
+}
+
+#buttonSupport {
+   background:transparent url("images/buttonSupport.png") no-repeat 0 0;
+   top: 0px;
+   left: 280px;
+}
+
+#buttonSupport:hover {
+   background:transparent url("images/buttonSupport_sel.png") no-repeat 0 0;
+}
+
+#buttonInvolved {
+   background:transparent url("images/buttonInvolved.png") no-repeat 0 0;
+   top: 87px;
+   left: 280px;
+}
+
+#buttonInvolved:hover {
+   background:transparent url("images/buttonInvolved_sel.png") no-repeat 0 0;
+}
+
+#primaryLinks a * {
+	visibility: hidden;
+}
+
+/*
+customizing of yahoo pipes
+*/
+
+#headlines {
+	text-align: justify;
+}
+
+#headlines ul li {
+	margin: 0 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+	
+#headlines div.title {
+	display: inline;
+	margin-right: 0.5em;
+}
+
+#headlines div.meta {
+	display: inline;
+	color: #444444;
+	font-size: smaller;  
+}
+
+#headlines div.item {
+	display: block;
+	}
+
+#stats {
+	color: #444444;
+	}
+	
+#screencast {
+	margin-bottom: 10px;
+}
+
+#newAndNoteworthy a {
+   display: block;
+   width:218px; 
+   height:51px;
+   padding: 0;
+   text-indent: -9000px;
+   background:transparent url("images/newAndNoteworthy.png") no-repeat 0 0;
+   margin-top: 10px;
+}
+
+.sideitem
+{
+	
+	border-bottom: 1px dotted #d4d4dd;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	clear:both;
+}
+.sideitem .modal
+{
+	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
+	padding: 5px;
+}
+.sideitem h6
+{
+	background-color: #e8e7dd;
+	border-bottom: 2px solid #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	padding: 8px 5px;
+}
+.sideitem li
+{
+		text-align: justify;
+		padding: 0 10px 5px 0;
+}
+.sideitem ul, .sideitem ol, .sideitem form, .sideitem p
+{
+	font-size: 12px;
+	padding: 5px;
+}
+
+/*
+#screencast {
+	margin: 20px;
+	position: relative;
+	left: 50px;
+	width: 480px; 
+	background-color: black; 
+	clear: both; 
+	height: 340px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+*/
