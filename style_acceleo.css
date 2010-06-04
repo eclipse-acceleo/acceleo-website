@@ -84,6 +84,7 @@
 }
 
 #primaryLinks strong {
+   font-size: larger;
    display: block;
    text-decoration: none;
 }
