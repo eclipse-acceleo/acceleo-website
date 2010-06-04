@@ -73,6 +73,7 @@
 }
 
 #primaryLinks a {
+   margin: 50px;
    display: inline-block;
    list-style-type: none;
    width: 180px;
@@ -81,10 +82,6 @@
    padding-left: 70px;
    margin: 0;
    color: black;
-}
-
-#primaryLinks a * {
-	visibility: hidden;
 }
 
 #primaryLinks strong {
@@ -218,3 +215,26 @@ customizing of yahoo pipes
 	vertical-align: middle;
 }
 */
+
+#midcolumn {
+	width: 640px;
+	padding: 0 10px 10px 10px;
+}
+
+#rightcolumn {
+	width: 260px;
+}
+
+
+h3 {
+	clear: both;
+}
+
+h7 {
+	font-weight: bold;
+	padding: 5px;
+}
+
+a strong {
+	text-decoration: underline;
+}
