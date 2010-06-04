@@ -14,35 +14,15 @@
 	float: right;
 }
 
-#feature_left {
-	text-align: justify;
-	float: left;
-	width: 30%;
-	margin-right: 3%;
-}
-
-#feature_middle {
-	text-align: justify;
-	float: left;
-	width: 30%;
-	margin-right: 3%
-}
-
-#feature_right {
-	text-align: justify;
-	float: left;
-	width: 30%;
-}
-
-#feature_total {
+#feature {
 	text-align: justify;
 	clear: both;
 	float: left;
-	width: 100%;
+	width: 63%;
 	margin-right: 3%;	
 }
 
-#feature_more {
+#feature_discovery {
 	text-align: justify;
 	float: left;
 	width: 30%;
@@ -168,7 +148,6 @@ customizing of yahoo pipes
 
 .sideitem
 {
-	
 	border-bottom: 1px dotted #d4d4dd;
 	margin-bottom: 10px;
 	padding-bottom: 5px;
