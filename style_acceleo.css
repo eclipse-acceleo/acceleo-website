@@ -84,6 +84,8 @@
 
 #buttonDownload {
    background:transparent url("images/buttonDownload_empty.png") no-repeat 0 0;
+   top: 0px;
+   left: 0px;
 }
 
 #buttonDownload:hover {
@@ -92,6 +94,8 @@
    
 #buttonDocumentation {
    background:transparent url("images/buttonDocumentation_empty.png") no-repeat 0 0;
+   top: 87px;
+   left: 0px;
 }
 
 #buttonDocumentation:hover {
@@ -99,6 +103,8 @@
 
 #buttonSupport {
    background:transparent url("images/buttonSupport_empty.png") no-repeat 0 0;
+   top: 0px;
+   left: 280px;
 }
 
 #buttonSupport:hover {
@@ -106,6 +112,8 @@
 
 #buttonInvolved {
    background:transparent url("images/buttonInvolved_empty.png") no-repeat 0 0;
+   top: 87px;
+   left: 280px;
 }
 
 #buttonInvolved:hover {
