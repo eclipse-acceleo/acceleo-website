@@ -88,6 +88,11 @@
 	visibility: hidden;
 }
 
+#primaryLinks strong {
+   display: block;
+   text-decoration: none;
+}
+
 #buttonDownload {
    background:transparent url("images/buttonDownload_empty.png") no-repeat 0 0;
 }
@@ -115,12 +120,6 @@
 }
 
 #buttonInvolved:hover {
-}
-
-#buttonTextStrong {
-   display: block;
-   text-decoration: none;
-   font-weight: bold;
 }
 
 /*
