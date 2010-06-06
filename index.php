@@ -9,5 +9,4 @@ include($App->getProjectCommon());
 
 	# Generate the web page
 	$App->generatePage($theme, $Menu, null, $pageAuthor, $pageKeywords, $pageTitle, $html);
-	#echo $headlines;
 ?>
