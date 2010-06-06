@@ -89,7 +89,7 @@ class RSS2HTML {
 			}
 			$currentHeaderLine++;
 		} while (1);
-		
+
 		$parts = explode(" ", $firstHeaderLine);
 		if ($parts[1] < 200 || $parts[1] >= 300) {
 			$this->readError = "HTTP ERROR: ".$parts[1];
@@ -106,26 +106,25 @@ class RSS2HTML {
 		@fclose($streamHandle);
 		return $result;
 	}
-}
 
-/*
- * Limit the length of the given String to the given number of characters.
- */
-function limitLength($initialValue, $limit = -1) {
-	if ($limit == -1 || strlen($initialValue) <= $limit) {
-		return $initialValue;
+	/*
+	 * Limit the length of the given String to the given number of characters.
+	 */
+	function limitLength($initialValue, $limit = -1) {
+		if ($limit == -1 || strlen($initialValue) <= $limit) {
+			return $initialValue;
+		}
+
+		$result = substr($initialValue, 0, $limit);
+
+		$lastSpace = strrchr($result, ' ');
+		if ($lastSpace != FALSE) {
+			$result = substr($result, 0, -strlen($lastSpace));
+			$result .= " [...]";
+		}
+
+		return $result;
 	}
-
-	$result = substr($initialValue, 0, $limit);
-
-	$lastSpace = strrchr($result, ' ');
-	if ($lastSpace != FALSE) {
-		$result = substr($result, 0, -strlen($lastSpace));
-		$result .= " [...]";
-	}
-
-	return $result;
-}
 }
 
 class RSSParser {
