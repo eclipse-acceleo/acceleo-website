@@ -14,8 +14,8 @@ class RSS2HTML {
 		GLOBAL $limitDescriptionLength;
 
 		$result = "";
+		return ini_get('allow_url_fopen');
 		$xmlString = $this->readFeed();
-		return $xmlString;
 		if ($xmlString === FALSE) {
 			$result = $this->readError;
 			return $result;
