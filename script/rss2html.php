@@ -14,7 +14,7 @@ class RSS2HTML {
 		GLOBAL $limitDescriptionLength;
 
 		$result = "";
-		$xmlString = readFeed();
+		$xmlString = $this->readFeed();
 		if ($xmlString == NULL) {
 			$result = $this->readError;
 			return $result;
@@ -59,7 +59,7 @@ class RSS2HTML {
 		GLOBAL $feedURL;
 
 		$result = "";
-
+return "debug";
 		// CURL is disabled on eclipse.org, use fopen
 		$file = @fopen($feedURL, "rb");
 		if ($file == FALSE) {
