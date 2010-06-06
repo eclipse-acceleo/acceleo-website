@@ -40,8 +40,8 @@ class RSS2HTML {
 				$item = $rssParser->items[$i];
 				$result .= "<li>";
 				$result .= "<div id=\"meta\">".$item->pubDate_time."</div>";
-				$result .= "<a href=\"".$item->link."\" display=\"block\">".limitLength($item->title, $limitTitleLength)."</a>";
-				$result .= limitLength($item->description, $limitDescriptionLength);
+				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a>";
+				$result .= $this->limitLength($item->description, $limitDescriptionLength);
 				$result .= "</li>\n";
 			}
 			$result .= "</ul>\n";
@@ -59,7 +59,10 @@ class RSS2HTML {
 
 		// CURL is disabled on eclipse.org, use fopen
 		$streamHandle = @fopen($feedURL, "rb");
-		$result = stream_get_contents($streamHandle);
+		if ($streamHandle == FALSE) {
+			return NULL;
+		}
+		$result = @fread($streamHandle, 16384);
         @fclose($streamHandle);
 		
 		return $result;
