@@ -14,12 +14,12 @@ class RSS2HTML {
 		GLOBAL $limitDescriptionLength;
 
 		$result = "";
-		return "debug";
 		$xmlString = readFeed();
 		if ($xmlString == NULL) {
 			$result = $this->readError;
 			return $result;
 		}
+		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
