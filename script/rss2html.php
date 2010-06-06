@@ -64,10 +64,9 @@ class RSS2HTML {
 		$path = $parsedURL['path'];
 		$port = 80;
 
-		$timeout = 10;
 		$result = "";
 
-		$handle = @fsockopen($host, $port, &$errno, &$errstr, $timeout);
+		$handle = @fsockopen($host, $port, &$errno, &$errstr, 50);
 		if(!$handle) {
 			$this->readError = $errstr;
 			return FALSE;
