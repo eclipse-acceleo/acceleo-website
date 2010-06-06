@@ -85,7 +85,7 @@ class RSS2HTML {
 
 		// Read the very first line of the header in order to retrieve the HTTP response code
 		$firstHeaderLine = fgets($handle, 1024);
-		$headerParts = explode(" ", $firstHeaderLine)
+		$headerParts = explode(" ", $firstHeaderLine);
 		if ($headerParts[1] < 200 || $headerParts[1] >= 300) {
 			$this->readError = "HTTP ERROR: ".$headerParts[1];
 			@fclose($handle);
