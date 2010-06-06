@@ -16,7 +16,7 @@ class RSS2HTML {
 		$result = "";
 		$xmlString = readFeed();
 		if ($xmlString == NULL) {
-			$result = this->$readError;
+			$result = $this->readError;
 			return $result;
 		}
 
