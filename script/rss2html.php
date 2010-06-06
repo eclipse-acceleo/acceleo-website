@@ -60,9 +60,12 @@ class RSS2HTML {
 
 		$parsedURL = parse_url($feedURL);
 
-		$streamHandle = @fsockopen($parsedURL["host"], 80, "", $this->readError, 5000);
+		$errno = "";
+		$errstr = "";
+		$streamHandle = @fsockopen($parsedURL["host"], 80, $errno, $errstr, 5000);
 
 		if ($streamHandle === FALSE) {
+			$this->readError = $errstr;
 			return FALSE;
 		}
 
