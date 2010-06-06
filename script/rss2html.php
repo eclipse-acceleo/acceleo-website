@@ -15,11 +15,11 @@ class RSS2HTML {
 
 		$result = "";
 		$xmlString = $this->readFeed();
-		return $xmlString;
 		if ($xmlString === FALSE) {
 			$result = $this->readError;
 			return $result;
 		}
+		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
