@@ -6,6 +6,8 @@ $limitDescriptionLength = 30;
 $feedURL = "http://www.acceleo.org/planet/rss20.xml";
 
 class RSS2HTML {
+	var $readError;
+
 	function convert() {
 		GLOBAL $limitItem;
 		GLOBAL $limitTitleLength;
@@ -13,7 +15,8 @@ class RSS2HTML {
 
 		$result = "";
 		$xmlString = $this->readFeed();
-		if ($xmlString == NULL) {
+		if ($xmlString === FALSE) {
+			$result = $this->readError;
 			return $result;
 		}
 		return $xmlString;
@@ -30,9 +33,9 @@ class RSS2HTML {
 			$result .= ":".xml_get_current_column_number($xmlParser);
 			return $result;
 		}
-		
+
 		$itemCount = min($limitItem, count($rssParser->items));
-		
+
 		if ($itemCount > 0) {
 			$result = "<h3><a href=\"".$rssParser->feed->link."\">".$rssParser->feed->title."</a></h3>\n";
 			$result .= "<ul>\n";
@@ -55,37 +58,74 @@ class RSS2HTML {
 	function readFeed() {
 		GLOBAL $feedURL;
 
-		$result = "";
+		$parts = parse_url($feedURL);
 
-		// CURL is disabled on eclipse.org, use fopen
-		$streamHandle = @fopen($feedURL, "rb");
-		if ($streamHandle == FALSE) {
-			return NULL;
+		$streamHandle = @fsockopen($parts["host"], 80, "", $this->readError, 5000);
+
+		if ($streamHandle === FALSE) {
+			return FALSE;
 		}
-		$result = @fread($streamHandle, 16384);
-        @fclose($streamHandle);
+
+		$request = "GET ".$parts["path"]." HTTP/1.1\r\n";
+		$request .= "Host: ".$parts["host"]."\r\n";
+		$request .= "Content-Encoding: identity\r\n";
+		$request .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1;) Gecko/2008070208 Firefox/3.0.1\r\n";
+		$request .= "\r\n";
+		@fputs($streamHandle, $request);
+
+		$firstHeaderLine = "";
+		$currentHeaderLine = 0;
+
+		do {
+			if (@feof($streamHandle) !== FALSE) {
+				break;
+			}
+			$headerLine = @fgets($streamHandle, 1024);
+			if ($headerLine[0] == "\n" || $headerLine[0] == "\r") {
+				break;
+			}
+			if ($currentHeaderLine == 0) {
+				$firstHeaderLine = $headerLine;
+			}
+			$currentHeaderLine++;
+		} while (1);
 		
-		return $result;
-	}
-
-	/*
-	 * Limit the length of the given String to the given number of characters.
-	 */
-	function limitLength($initialValue, $limit = -1) {
-		if ($limit == -1 || strlen($initialValue) <= $limit) {
-			return $initialValue;
+		$parts = explode(" ", $firstHeaderLine);
+		if ($parts[1] < 200 || 300 <= $parts[1]) {
+			$this->readError = "HTTP ERROR: ".$parts[1];
+			@fclose($streamHandle);
+			return FALSE;
 		}
 
-		$result = substr($initialValue, 0, $limit);
-
-		$lastSpace = strrchr($result, ' ');
-		if ($lastSpace != FALSE) {
-			$result = substr($result, 0, -strlen($lastSpace));
-			$result .= " [...]";
+		$result = "";
+		$data = fread($streamHandle, 4096);
+		while ($data != "") {
+			$result .= $data;
+			$data = fread($streamHandle, 4096);
 		}
-
+		@fclose($streamHandle);
 		return $result;
 	}
+}
+
+/*
+ * Limit the length of the given String to the given number of characters.
+ */
+function limitLength($initialValue, $limit = -1) {
+	if ($limit == -1 || strlen($initialValue) <= $limit) {
+		return $initialValue;
+	}
+
+	$result = substr($initialValue, 0, $limit);
+
+	$lastSpace = strrchr($result, ' ');
+	if ($lastSpace != FALSE) {
+		$result = substr($result, 0, -strlen($lastSpace));
+		$result .= " [...]";
+	}
+
+	return $result;
+}
 }
 
 class RSSParser {
@@ -116,7 +156,7 @@ class RSSParser {
 			$this->currentItem->description = trim($this->currentItem->description);
 			$this->currentItem->link = trim($this->currentItem->link);
 			$this->currentItem->author = trim($this->currentItem->author);
-			
+
 			$this->currentItem->pubDate_time = strtotime($this->currentItem->pubDate);
 
 			$this->items[] = $this->currentItem;
@@ -125,7 +165,7 @@ class RSSParser {
 		} elseif ($tagName == "CHANNEL") {
 			$this->feed->title = trim($this->feed->title);
 			$this->feed->link = trim($this->feed->link);
-			
+
 			$this->insideChannel = FALSE;
 		}
 	}
