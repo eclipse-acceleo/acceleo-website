@@ -14,8 +14,8 @@ class RSS2HTML {
 		GLOBAL $limitDescriptionLength;
 
 		$result = "";
-		return ini_get('allow_url_fopen');
 		$xmlString = $this->readFeed();
+		return $xmlString;
 		if ($xmlString === FALSE) {
 			$result = $this->readError;
 			return $result;
@@ -58,55 +58,10 @@ class RSS2HTML {
 	function readFeed() {
 		GLOBAL $feedURL;
 
-		$parsedURL = parse_url($feedURL);
-
-		$errno = "";
-		$errstr = "";
-		$streamHandle = @fsockopen($parsedURL["host"], 80, $errno, $errstr, 5000);
-
-		if ($streamHandle === FALSE) {
-			$this->readError = $errstr;
-			return FALSE;
+		$result = file_get_contents($feedURL);
+		if ($result === FALSE) {
+			$this->readError = "unable to read contents of ".$feedURL;
 		}
-
-		$request = "GET ".$parsedURL["path"]." HTTP/1.1\r\n";
-		$request .= "Host: ".$parsedURL["host"]."\r\n";
-		$request .= "Content-Encoding: identity\r\n";
-		$request .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1;) Gecko/2008070208 Firefox/3.0.1\r\n";
-		$request .= "\r\n";
-		@fputs($streamHandle, $request);
-
-		$firstHeaderLine = "";
-		$currentHeaderLine = 0;
-
-		do {
-			if (@feof($streamHandle) !== FALSE) {
-				break;
-			}
-			$headerLine = @fgets($streamHandle, 1024);
-			if ($headerLine[0] == "\n" || $headerLine[0] == "\r") {
-				break;
-			}
-			if ($currentHeaderLine == 0) {
-				$firstHeaderLine = $headerLine;
-			}
-			$currentHeaderLine++;
-		} while (1);
-
-		$parts = explode(" ", $firstHeaderLine);
-		if ($parts[1] < 200 || $parts[1] >= 300) {
-			$this->readError = "HTTP ERROR: ".$parts[1];
-			@fclose($streamHandle);
-			return FALSE;
-		}
-
-		$result = "";
-		$data = fread($streamHandle, 4096);
-		while ($data != "") {
-			$result .= $data;
-			$data = fread($streamHandle, 4096);
-		}
-		@fclose($streamHandle);
 		return $result;
 	}
 
