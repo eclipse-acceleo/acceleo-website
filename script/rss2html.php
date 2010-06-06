@@ -66,7 +66,7 @@ class RSS2HTML {
 
 		$result = "";
 
-		$handle = @fsockopen($host, $port, &$errno, &$errstr, 50);
+		$handle = @fsockopen($host, $port, &$errno, &$errstr, 5000);
 		if(!$handle) {
 			$this->readError = $errstr;
 			return FALSE;
