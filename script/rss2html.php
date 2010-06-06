@@ -14,6 +14,7 @@ class RSS2HTML {
 		GLOBAL $limitDescriptionLength;
 
 		$result = "";
+		return "debug";
 		$xmlString = readFeed();
 		if ($xmlString == NULL) {
 			$result = $this->readError;
