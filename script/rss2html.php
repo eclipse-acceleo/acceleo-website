@@ -81,6 +81,7 @@ class RSS2HTML {
 			$this->readError = $errstr;
 			return FALSE;
 		}
+		return "debug";
 
 		$httpRequest = "GET ".$path." HTTP/1.1\r\n";
 		$httpRequest .= "Host: ".$host."\r\n";
