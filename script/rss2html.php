@@ -6,8 +6,6 @@ $limitDescriptionLength = 30;
 $feedURL = "http://www.acceleo.org/planet/rss20.xml";
 
 class RSS2HTML {
-	var $readError = "";
-
 	function convert() {
 		GLOBAL $limitItem;
 		GLOBAL $limitTitleLength;
@@ -16,7 +14,6 @@ class RSS2HTML {
 		$result = "";
 		$xmlString = $this->readFeed();
 		if ($xmlString == NULL) {
-			$result = $this->readError;
 			return $result;
 		}
 		return $xmlString;
@@ -53,13 +50,13 @@ class RSS2HTML {
 	}
 
 	/*
-	 * Reads the feed denoted by URL $feedURL in memory. Any error will be logged within $readError.
+	 * Reads the feed denoted by URL $feedURL in memory.
 	 */
 	function readFeed() {
 		GLOBAL $feedURL;
 
 		$result = "";
-return "debug";
+
 		// CURL is disabled on eclipse.org, use fopen
 		$file = @fopen($feedURL, "rb");
 		if ($file == FALSE) {
