@@ -19,6 +19,7 @@ class RSS2HTML {
 			$result = $this->readError;
 			return $result;
 		}
+		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
@@ -60,7 +61,7 @@ class RSS2HTML {
 		$result = "";
 
 		// CURL is disabled on eclipse.org, use fopen
-		$file = @fopen($filename, "rb");
+		$file = @fopen($feedURL, "rb");
 		if ($file == FALSE) {
           return NULL;
         }
