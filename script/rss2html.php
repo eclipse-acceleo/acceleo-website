@@ -58,16 +58,9 @@ class RSS2HTML {
 		$result = "";
 
 		// CURL is disabled on eclipse.org, use fopen
-		$file = @fopen($feedURL, "rb");
-		if ($file == FALSE) {
-          return NULL;
-        }
-        $data = @fread($file, 4096);
-        while ($data != "") {
-          $result .= $data;
-          $data = @fread($file, 4096);
-        }
-        @fclose($file);
+		$streamHandle = @fopen($feedURL, "rb");
+		$result = stream_get_contents($streamHandle);
+        @fclose($streamHandle);
 		
 		return $result;
 	}
