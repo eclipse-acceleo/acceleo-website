@@ -44,6 +44,10 @@ Function rss2html() {
 		}
 		$result .= "</ul>\n";
 	}
+	
+	// debug
+	$result = "<h3>debug</h3>";
+	$result .= $xmlString;
 	return $result;
 }
 
