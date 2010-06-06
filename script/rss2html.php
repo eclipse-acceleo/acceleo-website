@@ -19,7 +19,6 @@ class RSS2HTML {
 			$result = $this->readError;
 			return $result;
 		}
-		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
@@ -60,30 +59,18 @@ class RSS2HTML {
 
 		$result = "";
 
-		$curlHandle = curl_init();
-		curl_setopt($curlHandle, CURLOPT_URL, $feedURL);
-		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($curlHandle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1;) Gecko/2008070208 Firefox/3.0.1");
-		curl_setopt($curlHandle, CURLOPT_REFERER, $feedURL);
-		curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 5000);
-		curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 10);
+		// CURL is disabled on eclipse.org, use fopen
+		$file = @fopen($filename, "rb");
+		if ($file == FALSE) {
+          return NULL;
+        }
+        $data = @fread($file, 4096);
+        while ($data != "") {
+          $result .= $data;
+          $data = @fread($file, 4096);
+        }
+        @fclose($file);
 		
-		$result = curl_exec($curlHandle);
-		if (curl_errno($curlHandle)) {
-			$this->readError = curl_error($curlHandle);
-			curl_close($curlHandle);
-			return NULL;
-		}
-		
-		$httpResponse = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
-		if ($httpResponse < 200 || $httpResponse >= 300) {
-			$this->readError = "HTTP ERROR: ".$httpResponse;
-			curl_close($curlHandle);
-			return NULL;
-		}
-		
-		curl_close($curlHandle);
 		return $result;
 	}
 
