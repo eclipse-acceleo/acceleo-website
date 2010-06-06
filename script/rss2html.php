@@ -58,10 +58,36 @@ class RSS2HTML {
 	function readFeed() {
 		GLOBAL $feedURL;
 
-		$result = file_get_contents($feedURL);
-		if ($result === FALSE) {
-			$this->readError = "unable to read contents of ".$feedURL;
+		$parsedURL = parse_url($feedURL);
+
+		$host = $parsedURL['host'];
+		$path = $parsedURL['path'];
+		$port = "80";
+
+		$timeout = 10;
+		$result = "";
+
+		$handle = @fsockopen($host, $port, $errno, $errstr, $timeout);
+		if(!$handle) {
+			$this->readError = "unable to connect to ".$host;
+			return FALSE;
 		}
+
+		$httpRequest = "GET ".$path." HTTP/1.1\r\n";
+		$httpRequest .= "Host: ".$host."\r\n";
+		$httpRequest .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.3) Gecko/20060426 Firefox/1.5.0.3\r\n";
+		$httpRequest .= "Connection: keep-alive\r\n";
+		$httpRequest .= "Referer: http://".$host."\r\n";
+		$httpRequest .= "\r\n";
+
+		fputs($handle, $httpRequest);
+		$result = fread($handle, 16384);
+		fclose($handle);
+
+		// strip headers out of the result
+		$pos = strpos($result, "\r\n\r\n");
+		$result = substr($result, $pos + 4);
+
 		return $result;
 	}
 
