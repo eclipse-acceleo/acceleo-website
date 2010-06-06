@@ -48,10 +48,6 @@ class RSS2HTML {
 			}
 			$result .= "</ul>\n";
 		}
-		
-		// debug
-		$result = "<h3>debug</h3>";
-		$result .= $xmlString;
 		return $result;
 	}
 
@@ -71,18 +67,17 @@ class RSS2HTML {
 		curl_setopt($curlHandle, CURLOPT_REFERER, $feedURL);
 		curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 5000);
 		curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 10);
-		curl_setopt($curlHandle, CURLOPT_ENCODING, 'identity');
 		
 		$result = curl_exec($curlHandle);
 		if (curl_errno($curlHandle)) {
-			this->$readError = curl_error($curlHandle);
+			$this->readError = curl_error($curlHandle);
 			curl_close($curlHandle);
 			return NULL;
 		}
 		
 		$httpResponse = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
 		if ($httpResponse < 200 || $httpResponse >= 300) {
-			this->$readError = "HTTP ERROR: $httpResponse";
+			$this->readError = "HTTP ERROR: ".$httpResponse;
 			curl_close($curlHandle);
 			return NULL;
 		}
