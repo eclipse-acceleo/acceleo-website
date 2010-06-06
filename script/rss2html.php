@@ -65,8 +65,18 @@ class RSS2HTML {
 		$port = 80;
 
 		$result = "";
-
-		$handle = @fsockopen($host, $port, &$errno, &$errstr, 5000);
+// GET /planet/rss20.xml HTTP/1.1
+// Host: www.acceleo.org
+// User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3
+// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+// Accept-Language: en-us,en;q=0.8,fr;q=0.5,fr-fr;q=0.3
+// Accept-Encoding: gzip,deflate
+// Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+// Keep-Alive: 115
+// Connection: keep-alive
+// Cookie: phorum_session_v5=131%3A2fe566e3790489c972d135bd871ab702
+		$ip = gethostbyname($host);
+		$handle = @fsockopen($ip, $port, &$errno, &$errstr, 10);
 		if(!$handle) {
 			$this->readError = $errstr;
 			return FALSE;
