@@ -15,11 +15,11 @@ class RSS2HTML {
 
 		$result = "";
 		$xmlString = $this->readFeed();
+		return $xmlString;
 		if ($xmlString === FALSE) {
 			$result = $this->readError;
 			return $result;
 		}
-		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
@@ -58,16 +58,16 @@ class RSS2HTML {
 	function readFeed() {
 		GLOBAL $feedURL;
 
-		$parts = parse_url($feedURL);
+		$parsedURL = parse_url($feedURL);
 
-		$streamHandle = @fsockopen($parts["host"], 80, "", $this->readError, 5000);
+		$streamHandle = @fsockopen($parsedURL["host"], 80, "", $this->readError, 5000);
 
 		if ($streamHandle === FALSE) {
 			return FALSE;
 		}
 
-		$request = "GET ".$parts["path"]." HTTP/1.1\r\n";
-		$request .= "Host: ".$parts["host"]."\r\n";
+		$request = "GET ".$parsedURL["path"]." HTTP/1.1\r\n";
+		$request .= "Host: ".$parsedURL["host"]."\r\n";
 		$request .= "Content-Encoding: identity\r\n";
 		$request .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1;) Gecko/2008070208 Firefox/3.0.1\r\n";
 		$request .= "\r\n";
@@ -91,7 +91,7 @@ class RSS2HTML {
 		} while (1);
 		
 		$parts = explode(" ", $firstHeaderLine);
-		if ($parts[1] < 200 || 300 <= $parts[1]) {
+		if ($parts[1] < 200 || $parts[1] >= 300) {
 			$this->readError = "HTTP ERROR: ".$parts[1];
 			@fclose($streamHandle);
 			return FALSE;
