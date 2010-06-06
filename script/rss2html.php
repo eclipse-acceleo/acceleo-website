@@ -19,7 +19,6 @@ class RSS2HTML {
 			$result = $this->readError;
 			return $result;
 		}
-		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
@@ -37,14 +36,14 @@ class RSS2HTML {
 		$itemCount = min($limitItem, count($rssParser->items));
 
 		if ($itemCount > 0) {
-			$result = "<h3><a href=\"".$rssParser->feed->link."\">".$rssParser->feed->title."</a></h3>\n";
-			$result .= "<ul>\n";
+			$result = "<ul>\n";
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$result .= "<li>";
 				$result .= "<div id=\"meta\">".$item->pubDate_time."</div>";
 				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a>";
 				$result .= $this->limitLength($item->description, $limitDescriptionLength);
+				$result .= "<br/><a href=\"".$item->link."\">read more</a>";
 				$result .= "</li>\n";
 			}
 			$result .= "</ul>\n";
@@ -62,36 +61,42 @@ class RSS2HTML {
 
 		$host = $parsedURL['host'];
 		$path = $parsedURL['path'];
-		$port = 80;
 
 		$result = "";
-// GET /planet/rss20.xml HTTP/1.1
-// Host: www.acceleo.org
-// User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3
-// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-// Accept-Language: en-us,en;q=0.8,fr;q=0.5,fr-fr;q=0.3
-// Accept-Encoding: gzip,deflate
-// Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
-// Keep-Alive: 115
-// Connection: keep-alive
-// Cookie: phorum_session_v5=131%3A2fe566e3790489c972d135bd871ab702
+
 		$ip = gethostbyname($host);
-		$handle = @fsockopen($ip, $port, &$errno, &$errstr, 1000);
+		$handle = @fsockopen($ip, 80, &$errno, &$errstr, 10);
 		if(!$handle) {
 			$this->readError = $errstr;
 			return FALSE;
 		}
-		return "debug";
 
 		$httpRequest = "GET ".$path." HTTP/1.1\r\n";
 		$httpRequest .= "Host: ".$host."\r\n";
-		$httpRequest .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.3) Gecko/20060426 Firefox/1.5.0.3\r\n";
+		$httpRequest .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3\r\n";
+		$httpRequest .= "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n";
+		$httpRequest .= "Accept-Language: en-us,en;q=0.8,fr;q=0.5,fr-fr;q=0.3\r\n";
+		$httpRequest .= "Keep-Alive: 115\r\n";
 		$httpRequest .= "Connection: keep-alive\r\n";
 		$httpRequest .= "Referer: http://".$host."\r\n";
 		$httpRequest .= "\r\n";
 
 		fputs($handle, $httpRequest);
-		$result = fread($handle, 16384);
+
+		// Read the very first line of the header in order to retrieve the HTTP response code
+		$firstHeaderLine = fgets($handle, 1024);
+		$headerParts = explode(" ", $firstHeaderLine)
+		if ($headerParts[1] < 200 || $headerParts[1] >= 300) {
+			$this->readError = "HTTP ERROR: ".$headerParts[1];
+			@fclose($handle);
+			return FALSE;
+		}
+
+		$data = fread($handle, 16384);
+		while (!feof($handle)) {
+			$result .= $data;
+			$data = fread($handle, 16384);
+		}
 		fclose($handle);
 
 		// strip headers out of the result
