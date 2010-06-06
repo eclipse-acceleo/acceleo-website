@@ -8,7 +8,7 @@ $feedURL = "http://www.acceleo.org/planet/rss20.xml";
 class RSS2HTML {
 	var $readError = "";
 
-	function rss2html() {
+	function convert() {
 		GLOBAL $limitItem;
 		GLOBAL $limitTitleLength;
 		GLOBAL $limitDescriptionLength;
