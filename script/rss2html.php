@@ -6,13 +6,17 @@ $limitDescriptionLength = 30;
 $feedURL = "http://www.acceleo.org/planet/rss20.xml";
 
 class RSS2HTML {
-	$readError = "";
+	var $readError = "";
 
 	function rss2html() {
+		GLOBAL $limitItem;
+		GLOBAL $limitTitleLength;
+		GLOBAL $limitDescriptionLength;
+
 		$result = "";
 		$xmlString = readFeed();
 		if ($xmlString == NULL) {
-			$result = $readError;
+			$result = this->$readError;
 			return $result;
 		}
 
@@ -55,6 +59,8 @@ class RSS2HTML {
 	 * Reads the feed denoted by URL $feedURL in memory. Any error will be logged within $readError.
 	 */
 	function readFeed() {
+		GLOBAL $feedURL;
+
 		$result = "";
 
 		$curlHandle = curl_init();
@@ -69,14 +75,14 @@ class RSS2HTML {
 		
 		$result = curl_exec($curlHandle);
 		if (curl_errno($curlHandle)) {
-			$readError = curl_error($curlHandle);
+			this->$readError = curl_error($curlHandle);
 			curl_close($curlHandle);
 			return NULL;
 		}
 		
 		$httpResponse = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
 		if ($httpResponse < 200 || $httpResponse >= 300) {
-			$readError = "HTTP ERROR: $httpResponse";
+			this->$readError = "HTTP ERROR: $httpResponse";
 			curl_close($curlHandle);
 			return NULL;
 		}
