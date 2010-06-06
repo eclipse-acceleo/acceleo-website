@@ -67,9 +67,9 @@ class RSS2HTML {
 		$timeout = 10;
 		$result = "";
 
-		$handle = @fsockopen($host, $port, $errno, $errstr, $timeout);
+		$handle = @fsockopen($host, $port, &$errno, &$errstr, $timeout);
 		if(!$handle) {
-			$this->readError = "unable to connect to ".$host;
+			$this->readError = $errstr;
 			return FALSE;
 		}
 
