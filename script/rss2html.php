@@ -62,7 +62,7 @@ class RSS2HTML {
 
 		$host = $parsedURL['host'];
 		$path = $parsedURL['path'];
-		$port = "80";
+		$port = 80;
 
 		$timeout = 10;
 		$result = "";
