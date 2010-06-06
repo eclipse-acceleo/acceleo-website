@@ -76,7 +76,7 @@ class RSS2HTML {
 // Connection: keep-alive
 // Cookie: phorum_session_v5=131%3A2fe566e3790489c972d135bd871ab702
 		$ip = gethostbyname($host);
-		$handle = @fsockopen($ip, $port, &$errno, &$errstr, 10);
+		$handle = @fsockopen($ip, $port, &$errno, &$errstr, 1000);
 		if(!$handle) {
 			$this->readError = $errstr;
 			return FALSE;
