@@ -148,14 +148,13 @@ class RSS2HTML {
 		}
 
 		$result = "";
+		$pruneChar = FALSE;
 		for ($i = 0; $i < strlen($initialValue) && strlen($result) <= $limit; $i++) {
-			$pruneChar = FALSE;
 			if (!$pruneChar && $initialValue[$i] == "<") {
 				$pruneChar = TRUE;
 			} elseif ($pruneChar && $initialValue[$i] == ">") {
 				$pruneChar = FALSE;
 			} else if (!$pruneChar) {
-				$result .= $pruneChar;
 				$result .= $initialValue[$i];
 			}
 		}
