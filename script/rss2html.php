@@ -6,9 +6,12 @@ $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
 $limitItem = 5;
 
 // Limits the length of the displayed items' title to the first n characters
+// -1 means the title length will not be limited
 $limitTitleLength = -1;
 
 // Limits the length of the displayed items' content to the first n characters
+// -1 means the description will not be limited
+// 0 Disables the description altogether
 $limitDescriptionLength = 0;
 
 // See http://www.php.net/manual/en/function.date.php for date formats
