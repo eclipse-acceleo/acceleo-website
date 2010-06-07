@@ -138,8 +138,10 @@ customizing of yahoo pipes
 
 #maintenance a {
 	display: block;
-	padding-right: 18px;
-   	background: transparent url(images/logo/acceleo_icon_24.png) no-repeat center right;
+	width:218px; 
+	height:51px;
+	padding-left: 24px;
+   	background: transparent url("images/logo/acceleo_icon_24.png") no-repeat center left;
 }
 
 #newAndNoteworthy a {
