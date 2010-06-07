@@ -19,7 +19,6 @@ class RSS2HTML {
 			$result = $this->readError;
 			return $result;
 		}
-		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
@@ -105,7 +104,7 @@ class RSS2HTML {
 			$pos = strpos($result, "\r\n\r\n");
 			$result = substr($result, $pos + 4);
 		} else {
-			file_get_contents($feedURL);
+			return file_get_contents($feedURL);
 		}
 
 		return $result;
