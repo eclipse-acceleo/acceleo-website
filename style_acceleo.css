@@ -146,6 +146,14 @@ customizing of yahoo pipes
    margin-top: 10px;
 }
 
+#eclipseCommunityAward a {
+   display: block;
+   padding: 0;
+   text-indent: -9000px;
+   background:transparent url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
+   margin-top: 10px;
+}
+
 .sideitem
 {
 	border-bottom: 1px dotted #d4d4dd;
