@@ -41,17 +41,20 @@ class RSS2HTML {
 		$itemCount = min($limitItem, count($rssParser->items));
 
 		if ($itemCount > 0) {
-			$result = "<ul>\n";
+			$result = "<h6><a class=\"rss\" href=\"".$rssParser->feed->link."\">";
+			$result .= "<img align=\"right\" src=\"images/rss2.gif\" alt=\"RSS Feed\"/></a>";
+			$result .= $rssParser->feed->title."</h6>";
+			$result .= "<div class=\"modal liveFeed\">\n<ul>\n";
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$result .= "<li>";
-				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a>";
+				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a><br/>";
 				$result .= $this->limitLength($item->description, $limitDescriptionLength);
 				$result .= "<br/><span class=\"posted\">".date($dateFormat, $item->pubDate_time)."</span>";
 				$result .= "<br/><a href=\"".$item->link."\">read more</a>";
 				$result .= "</li>\n";
 			}
-			$result .= "</ul>\n";
+			$result .= "</ul>\n</div>\n";
 		}
 		return $result;
 	}
