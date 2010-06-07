@@ -45,9 +45,9 @@ class RSS2HTML {
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$result .= "<li>";
-				$result .= "<div id=\"meta\">".date($dateFormat, $item->pubDate_time)."</div>";
 				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a>";
 				$result .= $this->limitLength($item->description, $limitDescriptionLength);
+				$result .= "<br/><span class=\"posted\">".date($dateFormat, $item->pubDate_time)."</span>"
 				$result .= "<br/><a href=\"".$item->link."\">read more</a>";
 				$result .= "</li>\n";
 			}
