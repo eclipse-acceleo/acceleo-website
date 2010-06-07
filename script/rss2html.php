@@ -6,7 +6,7 @@ $limitDescriptionLength = 100;
 $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
 
 // See http://www.php.net/manual/en/function.date.php for date formats
-// Here, we use "Jan 21st, 2010" for example
+// Here, we use "June 1st, 2010" for example
 $dateFormat = "F jS, Y";
 
 class RSS2HTML {
