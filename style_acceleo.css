@@ -148,6 +148,8 @@ customizing of yahoo pipes
 
 #eclipseCommunityAward a {
    display: block;
+   width: 144px; 
+   height: 144px;
    padding: 0;
    text-indent: -9000px;
    background:transparent url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
