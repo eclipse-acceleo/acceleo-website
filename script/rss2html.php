@@ -3,7 +3,7 @@
 $limitItem = 5;
 $limitTitleLength = 15;
 $limitDescriptionLength = 30;
-$feedURL = "http://www.acceleo.org/planet/rss20.xml";
+$feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
 
 class RSS2HTML {
 	var $readError;
@@ -57,51 +57,55 @@ class RSS2HTML {
 	function readFeed() {
 		GLOBAL $feedURL;
 
-		$parsedURL = parse_url($feedURL);
+		if (strpos($feedURL, "http") === 0) {
+			$parsedURL = parse_url($feedURL);
 
-		$host = $parsedURL['host'];
-		$path = $parsedURL['path'];
+			$host = $parsedURL['host'];
+			$path = $parsedURL['path'];
 
-		$result = "";
+			$result = "";
 
-		$ip = gethostbyname($host);
-		$handle = @fsockopen($ip, 80, &$errno, &$errstr, 10);
-		if(!$handle) {
-			$this->readError = $errstr;
-			return FALSE;
-		}
+			$ip = gethostbyname($host);
+			$handle = @fsockopen($ip, 80, &$errno, &$errstr, 10);
+			if(!$handle) {
+				$this->readError = $errstr;
+				return FALSE;
+			}
 
-		$httpRequest = "GET ".$path." HTTP/1.1\r\n";
-		$httpRequest .= "Host: ".$host."\r\n";
-		$httpRequest .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3\r\n";
-		$httpRequest .= "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n";
-		$httpRequest .= "Accept-Language: en-us,en;q=0.8,fr;q=0.5,fr-fr;q=0.3\r\n";
-		$httpRequest .= "Keep-Alive: 115\r\n";
-		$httpRequest .= "Connection: keep-alive\r\n";
-		$httpRequest .= "Referer: http://".$host."\r\n";
-		$httpRequest .= "\r\n";
+			$httpRequest = "GET ".$path." HTTP/1.1\r\n";
+			$httpRequest .= "Host: ".$host."\r\n";
+			$httpRequest .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3\r\n";
+			$httpRequest .= "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n";
+			$httpRequest .= "Accept-Language: en-us,en;q=0.8,fr;q=0.5,fr-fr;q=0.3\r\n";
+			$httpRequest .= "Keep-Alive: 115\r\n";
+			$httpRequest .= "Connection: keep-alive\r\n";
+			$httpRequest .= "Referer: http://".$host."\r\n";
+			$httpRequest .= "\r\n";
 
-		fputs($handle, $httpRequest);
+			fputs($handle, $httpRequest);
 
-		// Read the very first line of the header in order to retrieve the HTTP response code
-		$firstHeaderLine = fgets($handle, 1024);
-		$headerParts = explode(" ", $firstHeaderLine);
-		if ($headerParts[1] < 200 || $headerParts[1] >= 300) {
-			$this->readError = "HTTP ERROR: ".$headerParts[1];
-			@fclose($handle);
-			return FALSE;
-		}
+			// Read the very first line of the header in order to retrieve the HTTP response code
+			$firstHeaderLine = fgets($handle, 1024);
+			$headerParts = explode(" ", $firstHeaderLine);
+			if ($headerParts[1] < 200 || $headerParts[1] >= 300) {
+				$this->readError = "HTTP ERROR: ".$headerParts[1];
+				@fclose($handle);
+				return FALSE;
+			}
 
-		$data = fread($handle, 16384);
-		while (!feof($handle)) {
-			$result .= $data;
 			$data = fread($handle, 16384);
-		}
-		fclose($handle);
+			while (!feof($handle)) {
+				$result .= $data;
+				$data = fread($handle, 16384);
+			}
+			fclose($handle);
 
-		// strip headers out of the result
-		$pos = strpos($result, "\r\n\r\n");
-		$result = substr($result, $pos + 4);
+			// strip headers out of the result
+			$pos = strpos($result, "\r\n\r\n");
+			$result = substr($result, $pos + 4);
+		} else {
+			file_get_contents($feedURL);
+		}
 
 		return $result;
 	}
