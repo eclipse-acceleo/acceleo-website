@@ -60,6 +60,12 @@ class RSS2HTML {
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$itemTitle = $this->limitLength($item->title, $limitTitleLength);
+				if (strpos($itemTitle, $item->author) === 0) {
+					$itemTitle = trim(substr($itemTitle, strlen($item->author)));
+					if (strpos($itemTitle, ':') === 0) {
+						$itemTitle = trim(substr($itemTitle, 1));
+					}
+				}
 				$itemDescription = "";
 				if ($limitDescriptionLength > 0) {
 					$itemDescription = $this->limitLength($item->description, $limitDescriptionLength);
