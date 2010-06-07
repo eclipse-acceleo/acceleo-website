@@ -1,9 +1,15 @@
 <?php
-// Configuration of the rss2html utility
-$limitItem = 5;
-$limitTitleLength = 40;
-$limitDescriptionLength = 100;
+// URL of the feed that is to be converted. Can be either URL or absolute URI
 $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
+
+// Limits the number of items that is to be displayed to the first n
+$limitItem = 5;
+
+// Limits the length of the displayed items' title to the first n characters
+$limitTitleLength = 40;
+
+// Limits the length of the displayed items' content to the first n characters
+$limitDescriptionLength = 100;
 
 // See http://www.php.net/manual/en/function.date.php for date formats
 // Here, we use "June 1st, 2010" for example
@@ -39,19 +45,33 @@ class RSS2HTML {
 		}
 
 		$itemCount = min($limitItem, count($rssParser->items));
-
+		
 		if ($itemCount > 0) {
-			$result = "<h6><a class=\"rss\" href=\"".$rssParser->feed->link."\">";
-			$result .= "<img align=\"right\" src=\"images/rss2.gif\" alt=\"RSS Feed\"/></a>";
-			$result .= $rssParser->feed->title."</h6>";
+			$feedLink = $rssParser->feed->link;
+			$feedTitle = $rssParser->feed->title;
+			
+			$result = "<h6><a class='rss' href='$feedLink'><img align='right' src='images/rss2.gif' alt='RSS Feed'/></a>";
+			$result .= "<a class='rss' href='$feedLink'>$feedTitle</a></h6>\n";
+			
 			$result .= "<div class=\"modal liveFeed\">\n<ul>\n";
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
-				$result .= "<li>";
-				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a><br/>";
-				$result .= $this->limitLength($item->description, $limitDescriptionLength);
-				$result .= "<br/><span class=\"posted\">".date($dateFormat, $item->pubDate_time)."</span>";
-				$result .= "<br/><a href=\"".$item->link."\">read more</a>";
+				$itemTitle = $this->limitLength($item->title, $limitTitleLength);
+				$itemDescription = "";
+				if ($limitDescriptionLength > 0) {
+					$itemDescription = $this->limitLength($item->description, $limitDescriptionLength);
+				}
+				$itemPubDate = date($dateFormat, $item->pubDate_time);
+				
+				$result .= "<li>\n";
+				$result .= "<a href='$item->link' display='block'>$itemTitle</a><br/>\n";
+				if (strlen($itemDescription) > 0) {
+					$result .= "$itemDescription<br/>\n";
+					$result .= "<span class='posted'>$itemPubDate</span><br/><br/>\n";
+					$result .= "<a href='$item->link'>read more...</a>\n";
+				} else {
+					$result .= "<span class='posted'>$itemPubDate</span>\n";
+				}
 				$result .= "</li>\n";
 			}
 			$result .= "</ul>\n</div>\n";
@@ -119,14 +139,25 @@ class RSS2HTML {
 	}
 
 	/*
-	 * Limit the length of the given String to the given number of characters.
+	 * Limit the length of the given HTML String to the given number of characters. Take note that this will strip all html information
+	 * out of the text and only return the raw text itself (save for xml entities).
 	 */
 	function limitLength($initialValue, $limit = -1) {
 		if ($limit == -1 || strlen($initialValue) <= $limit) {
 			return $initialValue;
 		}
 
-		$result = substr($initialValue, 0, $limit);
+		$result = "";
+		for ($i = 0; $i < strlen($initialValue) && strlen($result) <= $limit; $i++) {
+			$pruneChar = FALSE;
+			if (!$pruneChar && $initialValue[$i] == "<") {
+				$pruneChar = TRUE;
+			} elseif ($pruneChar && $initialValue[$i] == ">") {
+				$pruneChar = FALSE;
+			} else if (!$pruneChar) {
+				$result .= $initialValue[$i];
+			}
+		}
 
 		$lastSpace = strrchr($result, ' ');
 		if ($lastSpace != FALSE) {
