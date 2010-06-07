@@ -138,7 +138,7 @@ customizing of yahoo pipes
 
 #maintenance a {
 	display: block;
-	vertical-align: middle;
+	background: transparent url("images/logo/acceleo_icon_24.png") no-repeat 0 0;
 }
 
 #newAndNoteworthy a {
