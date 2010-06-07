@@ -12,7 +12,7 @@
 	# these are optional
 	$Nav->setLinkList(array());
 	$Nav->addNavSeparator("Acceleo", 	"/acceleo");
-	$Nav->addCustomNav("Download", "http://eclipse.org/modeling/m2t/downloads/?project=acceleo", "_self", 3);
+	$Nav->addCustomNav("Download", "/acceleo/download", "_self", 3);
 	$Nav->addCustomNav("Documentation", "/acceleo/documentation", "_self", 3);
 	$Nav->addCustomNav("Support", "/acceleo/support", "_self", 3);
 	$Nav->addCustomNav("Getting Involved", "/acceleo/developers", "_self", 3);
@@ -23,7 +23,7 @@
 
 	$Menu->setMenuItemList(array());
 	$Menu->addMenuItem("Home", "/acceleo", "_self");
-	$Menu->addMenuItem("Download", "http://eclipse.org/modeling/m2t/downloads/?project=acceleo", "_self");
+	$Menu->addMenuItem("Download", "/acceleo/download", "_self");
 	$Menu->addMenuItem("Documentation", "/acceleo/documentation", "_self");
 	$Menu->addMenuItem("Support", "/acceleo/support", "_self");
 	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
