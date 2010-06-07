@@ -67,10 +67,10 @@ class RSS2HTML {
 				$result .= "<a href='$item->link' display='block'>$itemTitle</a><br/>\n";
 				if (strlen($itemDescription) > 0) {
 					$result .= "$itemDescription<br/>\n";
-					$result .= "<span class='posted'>$itemPubDate</span><br/><br/>\n";
-					$result .= "<a href='$item->link'>read more...</a>\n";
+					$result .= "<span class='posted'>$itemPubDate</span><br/>\n";
+					$result .= "<a href='$item->link'>read more...</a><br/>\n";
 				} else {
-					$result .= "<span class='posted'>$itemPubDate</span>\n";
+					$result .= "<span class='posted'>$itemPubDate</span><br/>\n";
 				}
 				$result .= "</li>\n";
 			}
