@@ -19,6 +19,7 @@ class RSS2HTML {
 			$result = $this->readError;
 			return $result;
 		}
+		return $xmlString;
 
 		$xmlParser = xml_parser_create();
 		$rssParser = new RSSParser();
