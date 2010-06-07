@@ -51,7 +51,7 @@ class RSS2HTML {
 			$feedTitle = $rssParser->feed->title;
 			
 			$result = "<h6><a class='rss' href='$feedLink'><img align='right' src='images/rss2.gif' alt='RSS Feed'/></a>";
-			$result .= "<a class='rss' href='$feedLink'>$feedTitle</a></h6>\n";
+			$result .= "<a href='$feedLink'>$feedTitle</a></h6>\n";
 			
 			$result .= "<div class=\"modal liveFeed\">\n<ul>\n";
 			for ($i = 0; $i < $itemCount; $i++) {
@@ -155,6 +155,7 @@ class RSS2HTML {
 			} elseif ($pruneChar && $initialValue[$i] == ">") {
 				$pruneChar = FALSE;
 			} else if (!$pruneChar) {
+				$result .= $pruneChar;
 				$result .= $initialValue[$i];
 			}
 		}
