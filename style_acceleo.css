@@ -136,6 +136,10 @@ customizing of yahoo pipes
 	margin-bottom: 10px;
 }
 
+#maintenance a {
+	display: block;
+}
+
 #newAndNoteworthy a {
    display: block;
    width:218px; 
