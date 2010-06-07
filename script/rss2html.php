@@ -1,9 +1,13 @@
 <?php
 // Configuration of the rss2html utility
 $limitItem = 5;
-$limitTitleLength = 15;
-$limitDescriptionLength = 30;
+$limitTitleLength = 40;
+$limitDescriptionLength = 100;
 $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
+
+// See http://www.php.net/manual/en/function.date.php for date formats
+// Here, we use "Jan 21st, 2010" for example
+$dateFormat = "F jS, Y";
 
 class RSS2HTML {
 	var $readError;
@@ -12,6 +16,7 @@ class RSS2HTML {
 		GLOBAL $limitItem;
 		GLOBAL $limitTitleLength;
 		GLOBAL $limitDescriptionLength;
+		GLOBAL $dateFormat;
 
 		$result = "";
 		$xmlString = $this->readFeed();
@@ -40,7 +45,7 @@ class RSS2HTML {
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$result .= "<li>";
-				$result .= "<div id=\"meta\">".$item->pubDate_time."</div>";
+				$result .= "<div id=\"meta\">".date($dateFormat, $item->pubDate_time)."</div>";
 				$result .= "<a href=\"".$item->link."\" display=\"block\">".$this->limitLength($item->title, $limitTitleLength)."</a>";
 				$result .= $this->limitLength($item->description, $limitDescriptionLength);
 				$result .= "<br/><a href=\"".$item->link."\">read more</a>";
