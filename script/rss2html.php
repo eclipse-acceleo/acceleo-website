@@ -6,10 +6,10 @@ $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
 $limitItem = 5;
 
 // Limits the length of the displayed items' title to the first n characters
-$limitTitleLength = 40;
+$limitTitleLength = -1;
 
 // Limits the length of the displayed items' content to the first n characters
-$limitDescriptionLength = 100;
+$limitDescriptionLength = 0;
 
 // See http://www.php.net/manual/en/function.date.php for date formats
 // Here, we use "June 1st, 2010" for example
