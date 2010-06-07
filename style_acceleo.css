@@ -140,6 +140,7 @@ customizing of yahoo pipes
 	display: block;
 	height: 24px;
 	padding-left: 24px;
+	vertical-align: middle;
    	background: transparent url("images/logo/acceleo_icon_24.png") no-repeat center left;
 }
 
