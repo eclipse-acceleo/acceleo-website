@@ -51,6 +51,8 @@ class RSS2HTML {
 		
 		if ($itemCount > 0) {
 			$feedLink = $rssParser->feed->link;
+			// Custom fix for planet Acceleo : we don't have the accurate link
+			$feedLink = "http://www.acceleo.org/planet/rss20.xml";
 			$feedTitle = $rssParser->feed->title;
 			
 			$result = "<h6><a class='rss' href='$feedLink'><img align='right' src='images/rss2.gif' alt='RSS Feed'/></a>";
