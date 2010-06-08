@@ -1,4 +1,13 @@
 <?php
+/* Copyright (c) 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ */
 // URL of the feed that is to be converted. Can be either URL or absolute URI
 $feedURL = "/home/data/httpd/writable/acceleo/rss20.xml";
 
