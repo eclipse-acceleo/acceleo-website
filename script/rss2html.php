@@ -58,7 +58,7 @@ class RSS2HTML {
 			$result = "<h6><a class='rss' href='$feedLink'><img align='right' src='images/rss2.gif' alt='RSS Feed'/></a>";
 			$result .= "<a href='$feedLink'>$feedTitle</a></h6>\n";
 			
-			$result .= "<div class=\"modal liveFeed\">\n<ul>\n";
+			$result .= "<div class=\"modal\">\n<ul>\n";
 			for ($i = 0; $i < $itemCount; $i++) {
 				$item = $rssParser->items[$i];
 				$itemTitle = $this->limitLength($item->title, $limitTitleLength);
