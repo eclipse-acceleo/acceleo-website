@@ -197,10 +197,13 @@ customizing of yahoo pipes
 }
 
 #olderNews {
+	padding-bottom: 10px
+}
+
+#olderNews a {
 	float: right;
-	margin-bottom: 30px;
-	margin-right: 3%;
 	font-size: smaller;
+	margin-right: 3%;
 }
 
 .sideitem {
