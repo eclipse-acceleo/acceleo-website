@@ -76,8 +76,7 @@
 }
 
 #buttonDownload {
-	background: transparent url("images/buttonDownload_empty.png") no-repeat
-		0 0;
+	background: transparent url("images/buttonDownload_empty.png") no-repeat 0 0;
 }
 
 #buttonDownload:hover {
@@ -85,8 +84,7 @@
 }
 
 #buttonDocumentation {
-	background: transparent url("images/buttonDocumentation_empty.png")
-		no-repeat 0 0;
+	background: transparent url("images/buttonDocumentation_empty.png") no-repeat 0 0;
 }
 
 #buttonDocumentation:hover {
@@ -94,8 +92,7 @@
 }
 
 #buttonSupport {
-	background: transparent url("images/buttonSupport_empty.png") no-repeat
-		0 0;
+	background: transparent url("images/buttonSupport_empty.png") no-repeat 0 0;
 }
 
 #buttonSupport:hover {
@@ -103,8 +100,7 @@
 }
 
 #buttonInvolved {
-	background: transparent url("images/buttonInvolved_empty.png") no-repeat
-		0 0;
+	background: transparent url("images/buttonInvolved_empty.png") no-repeat 0 0;
 }
 
 #buttonInvolved:hover {
@@ -194,15 +190,14 @@ customizing of yahoo pipes
 	height: 144px;
 	padding: 0;
 	text-indent: -9000px;
-	background: transparent
-		url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
+	background: transparent url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #olderNews {
-	text-align: right;
+	margin-left: auto;
 	font-size: smaller;
 }
 
@@ -214,8 +209,7 @@ customizing of yahoo pipes
 }
 
 .sideitem .modal {
-	background: #FFF
-		url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
+	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
 	padding: 5px;
 }
 
@@ -240,20 +234,6 @@ customizing of yahoo pipes
 	padding: 5px;
 }
 
-/*
-#screencast {
-	margin: 20px;
-	position: relative;
-	left: 50px;
-	width: 480px; 
-	background-color: black; 
-	clear: both; 
-	height: 340px;
-	color: white;
-	text-align: center;
-	vertical-align: middle;
-}
-*/
 #midcolumn {
 	width: 640px;
 	padding: 0 10px 10px 10px;
