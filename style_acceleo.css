@@ -157,6 +157,8 @@ customizing of yahoo pipes
    text-indent: -9000px;
    background:transparent url("images/newAndNoteworthy.png") no-repeat 0 0;
    margin-top: 10px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 #eclipseCommunityAward a {
@@ -167,6 +169,8 @@ customizing of yahoo pipes
    text-indent: -9000px;
    background:transparent url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
    margin-top: 10px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .sideitem
