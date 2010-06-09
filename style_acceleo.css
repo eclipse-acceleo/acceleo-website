@@ -3,13 +3,13 @@
 }
 
 #introText p.left {
-	text-align: justify; 
+	text-align: justify;
 	width: 48%;
 	float: left;
 }
 
 #introText p.right {
-	text-align: justify; 
+	text-align: justify;
 	width: 48%;
 	float: right;
 }
@@ -18,7 +18,7 @@
 	text-align: justify;
 	float: left;
 	width: 63%;
-	margin-right: 3%;	
+	margin-right: 3%;
 }
 
 #feature_discovery {
@@ -26,24 +26,24 @@
 	float: left;
 	width: 30%;
 }
-	
+
 #primaryLinks {
 	position: relative;
 	padding-left: 420px;
 	width: 560px;
 }
 
-#primaryLinks h3{
+#primaryLinks h3 {
 	visibility: hidden;
 	height: 0;
 }
 
 #primaryLinks ul li {
-   vertical-align: bottom;
-   display: inline-block;
-   list-style-type: none;
-   padding: 0;
-   margin: 0;
+	vertical-align: bottom;
+	display: inline-block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 #primaryLinks a:hover {
@@ -52,55 +52,61 @@
 }
 
 #primaryLinks a {
-   display: inline-block;
-   list-style-type: none;
-   width: 180px;
-   height: 77px;
-   padding-top: 10px;
-   padding-left: 70px;
-   margin: 0;
-   color: black;
+	display: inline-block;
+	list-style-type: none;
+	width: 180px;
+	height: 77px;
+	padding-top: 10px;
+	padding-left: 70px;
+	margin: 0;
+	color: black;
 }
 
 #primaryLinks strong {
-   font-size: larger;
-   display: block;
-   text-decoration: none;
+	font-size: larger;
+	display: block;
+	text-decoration: none;
 }
 
 #buttonDownload {
-   background:transparent url("images/buttonDownload_empty.png") no-repeat 0 0;
+	background: transparent url("images/buttonDownload_empty.png") no-repeat
+		0 0;
 }
 
 #buttonDownload:hover {
+	
 }
 
-   
 #buttonDocumentation {
-   background:transparent url("images/buttonDocumentation_empty.png") no-repeat 0 0;
+	background: transparent url("images/buttonDocumentation_empty.png")
+		no-repeat 0 0;
 }
 
 #buttonDocumentation:hover {
+	
 }
 
 #buttonSupport {
-   background:transparent url("images/buttonSupport_empty.png") no-repeat 0 0;
+	background: transparent url("images/buttonSupport_empty.png") no-repeat
+		0 0;
 }
 
 #buttonSupport:hover {
+	
 }
 
 #buttonInvolved {
-   background:transparent url("images/buttonInvolved_empty.png") no-repeat 0 0;
+	background: transparent url("images/buttonInvolved_empty.png") no-repeat
+		0 0;
 }
 
 #buttonInvolved:hover {
+	
 }
 
 /*
 customizing of yahoo pipes
 */
-
 #headlines {
 	text-align: justify;
 }
@@ -111,7 +117,6 @@ customizing of yahoo pipes
 	list-style-image: none;
 }
 
-	
 #headlines div.title {
 	display: inline;
 	margin-right: 0.5em;
@@ -120,17 +125,17 @@ customizing of yahoo pipes
 #headlines div.meta {
 	display: inline;
 	color: #444444;
-	font-size: smaller;  
+	font-size: smaller;
 }
 
 #headlines div.item {
 	display: block;
-	}
+}
 
 #stats {
 	color: #444444;
-	}
-	
+}
+
 #screencast {
 	margin-bottom: 10px;
 }
@@ -139,69 +144,82 @@ customizing of yahoo pipes
 	display: block;
 	height: 24px;
 	padding-left: 24px;
-   	background: transparent url("images/logo/acceleo_icon_24.png") no-repeat center left;
+	background: transparent url("images/logo/acceleo_icon_24.png") no-repeat
+		center left;
 }
 
 #maintenanceLink {
-	padding-left : 27px;
-	padding-top : 6px;
+	padding-left: 27px;
+	padding-top: 6px;
 }
 
+#obeo a {
+	display: block;
+	width: 117px;
+	height: 60px;
+	padding: 0;
+	text-indent: -9000px;
+	background: transparent url("images/logo_obeo.png") no-repeat 0 0;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 #newAndNoteworthy a {
-   display: block;
-   width:218px; 
-   height:51px;
-   padding: 0;
-   text-indent: -9000px;
-   background:transparent url("images/newAndNoteworthy.png") no-repeat 0 0;
-   margin-top: 10px;
-   margin-left: auto;
-   margin-right: auto;
+	display: block;
+	width: 218px;
+	height: 51px;
+	padding: 0;
+	text-indent: -9000px;
+	background: transparent url("images/newAndNoteworthy.png") no-repeat 0 0;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #eclipseCommunityAward a {
-   display: block;
-   width: 144px; 
-   height: 144px;
-   padding: 0;
-   text-indent: -9000px;
-   background:transparent url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
-   margin-top: 10px;
-   margin-left: auto;
-   margin-right: auto;
+	display: block;
+	width: 144px;
+	height: 144px;
+	padding: 0;
+	text-indent: -9000px;
+	background: transparent
+		url("http://www.eclipse.org/images/awards/winner09.jpg") no-repeat 0 0;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.sideitem
-{
+.sideitem {
 	border-bottom: 1px dotted #d4d4dd;
 	margin-bottom: 10px;
 	padding-bottom: 5px;
-	clear:both;
+	clear: both;
 }
-.sideitem .modal
-{
-	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
+
+.sideitem .modal {
+	background: #FFF
+		url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
 	padding: 5px;
 }
-.sideitem h6
-{
+
+.sideitem h6 {
 	background-color: #e8e7dd;
 	border-bottom: 2px solid #FFF;
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 0px;
-	-moz-border-radius-topleft:3px;
-	-moz-border-radius-topright:3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
 	padding: 8px 5px;
 }
-.sideitem li
-{
-		text-align: justify;
-		padding: 0 10px 5px 0;
+
+.sideitem li {
+	text-align: justify;
+	padding: 0 10px 5px 0;
 }
-.sideitem ul, .sideitem ol, .sideitem form, .sideitem p
-{
+
+.sideitem ul,.sideitem ol,.sideitem form,.sideitem p {
 	font-size: 12px;
 	padding: 5px;
 }
@@ -220,7 +238,6 @@ customizing of yahoo pipes
 	vertical-align: middle;
 }
 */
-
 #midcolumn {
 	width: 640px;
 	padding: 0 10px 10px 10px;
@@ -229,7 +246,6 @@ customizing of yahoo pipes
 #rightcolumn {
 	width: 260px;
 }
-
 
 h3 {
 	clear: both;
