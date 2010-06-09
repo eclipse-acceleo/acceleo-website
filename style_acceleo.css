@@ -202,7 +202,8 @@ customizing of yahoo pipes
 }
 
 #olderNews {
-	font-size: small;
+	text-align: right;
+	font-size: smaller;
 }
 
 .sideitem {
