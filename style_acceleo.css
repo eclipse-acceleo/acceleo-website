@@ -201,6 +201,10 @@ customizing of yahoo pipes
 	margin-right: auto;
 }
 
+#olderNews {
+	font-size: small;
+}
+
 .sideitem {
 	border-bottom: 1px dotted #d4d4dd;
 	margin-bottom: 10px;
