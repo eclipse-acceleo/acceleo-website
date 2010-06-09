@@ -27,6 +27,13 @@
 	width: 30%;
 }
 
+#acceleoInAction {
+	text-align: justify;
+	float: left;
+	width: 63%;
+	margin-right: 3%;
+}
+
 #primaryLinks {
 	position: relative;
 	padding-left: 420px;
