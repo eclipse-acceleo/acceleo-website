@@ -197,8 +197,7 @@ customizing of yahoo pipes
 }
 
 #olderNews {
-	margin-left: auto;
-	margin-right: 0;
+	float: right;
 	font-size: smaller;
 }
 
