@@ -161,6 +161,14 @@ customizing of yahoo pipes
 	margin-right: auto;
 }
 
+#obeo img {
+	display: block;
+	width: 117px;
+	height: 60px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #newAndNoteworthy a {
 	display: block;
 	width: 218px;
