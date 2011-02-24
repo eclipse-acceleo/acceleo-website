@@ -259,7 +259,14 @@ a strong {
 #leftcol
 {
 	background-color: #e8e7dd;
-	float: left;
-	margin-right: 20px;
-	width: 185px;
+}
+
+#novaContent.faux
+{
+	background: #e8e7dd;
+}
+
+#midcolumn
+{
+	background: #FFF;
 }
