@@ -102,7 +102,7 @@
 	
 	<div class="sideitem maintenance">
 		<a id="maintenanceLink" href="http://acceleo.org/pages/home" title="Maintenance 2.x stream website" rel="nofollow">
-		2.x maintenance stream website</a>
+		2.x legacy stream website</a>
 	</div>
 
 	<div class="sideitem">
@@ -128,29 +128,37 @@
 	</div>
 	
 	<div class="sideitem">
-		<h6><a href="http://wiki.eclipse.org/Acceleo/News">News</a></h6>
-		<div class="modal">
-			<ul>
-				<li>
-					<img src="images/EclipseLiveIcon.png" width="16"/><a href="http://live.eclipse.org/node/926">Helios In Action: Modeling</a>. Ed
-					Merks, Cedric Brun and Sebastian Zarnikow present the modeling projects in Helios. 
-				</li>
-				<li>
-					<img src="images/icon.png" width="16" height="16"/>Share the Worldcup experience with the Eclipse Community !<br/>
-					Acceleo and EEF used to power an RCP application for the best forecasts of the worldcup matches.
-					<a href="http://wiki.eclipse.org/EEF_Sample_World_Cup_Forecasts" rel="nofollow">Join us for the play !</a>
-				</li>
-				<li>
-					<a href="http://www.eclipse.org/acceleo">Acceleo 3.0.0</a> is coming soon !
-					<span class="posted">03/04/2010</span>
-				</li>
-				<li>
-					<a href="http://acceleo.org/pages/download-acceleo-2-7-0" rel="nofollow">Acceleo 2.7.0</a> is out !
-					<span class="posted">02/04/2010</span>
-				</li>
-			</ul>
-			<div id="olderNews"><a href="http://wiki.eclipse.org/Acceleo/News">Older News...</a></div>
-		</div>
+		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		<script>
+			new TWTR.Widget({
+				version: 2,
+				type: 'profile',
+				rpp: 8,
+				interval: 6000,
+				width: 250,
+				height: 300,
+				theme: {
+					shell: {
+						background: '#6d9bb0',
+						color: '#ffffff'
+					},
+					tweets: {
+						background: '#ffffff',
+						color: '#000000',
+						links: '#157d8f'
+					}
+				},
+				features: {
+					scrollbar: true,
+					loop: false,
+					live: true,
+					hashtags: true,
+					timestamp: true,
+					avatars: true,
+					behavior: 'all'
+				}
+			}).render().setUser('acceleo').start();
+		</script>
 	</div>
 
 	<div class="sideitem">
