@@ -241,14 +241,17 @@ a strong {
 	text-decoration: underline;
 }
 
-.sideitem h6
-{
+.documentationitem h2 {
 	background-color: #e8e7dd;
 	border-bottom: 2px solid #FFF;
-	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 0px;
 	-moz-border-radius-topleft:3px;
 	-moz-border-radius-topright:3px;
 	padding: 8px 5px;
+}
+
+.sideitem .contents {
+	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
+	padding: 5px;
 }
