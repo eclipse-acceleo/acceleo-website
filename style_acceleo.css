@@ -256,9 +256,11 @@ a strong {
 	padding: 5px;
 }
 
-#novaContent.faux
+#leftcol
 {
-	background: #e8e7dd;
-	padding-bottom: 20px;
-	padding-top: 20px;
+	background-color: #e8e7dd;
+	clear: both;
+	float: left;
+	margin-right: 20px;
+	width: 185px;
 }
