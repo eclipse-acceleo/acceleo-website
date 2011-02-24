@@ -107,38 +107,6 @@
 	
 }
 
-/*
-customizing of yahoo pipes
-*/
-#headlines {
-	text-align: justify;
-}
-
-#headlines ul li {
-	margin: 0 0;
-	list-style-type: none;
-	list-style-image: none;
-}
-
-#headlines div.title {
-	display: inline;
-	margin-right: 0.5em;
-}
-
-#headlines div.meta {
-	display: inline;
-	color: #444444;
-	font-size: smaller;
-}
-
-#headlines div.item {
-	display: block;
-}
-
-#stats {
-	color: #444444;
-}
-
 #screencast {
 	margin-bottom: 10px;
 }
@@ -271,4 +239,16 @@ h7 {
 
 a strong {
 	text-decoration: underline;
+}
+
+.sideitem h6
+{
+	background-color: #e8e7dd;
+	border-bottom: 2px solid #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	padding: 8px 5px;
 }
