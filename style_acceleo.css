@@ -241,6 +241,9 @@ a strong {
 	text-decoration: underline;
 }
 
+.twtr-hd h4, .twtr-hd h3{
+clear:none;
+}
 .acceleonavitem h2 {
 	background-color: #e8e7dd;
 	border-bottom: 2px solid #FFF;
