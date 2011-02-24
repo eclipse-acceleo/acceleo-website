@@ -258,3 +258,10 @@ clear:none;
 	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
 	padding: 5px;
 }
+
+#novaContent.faux
+{
+	background: #FFF url('images/nova_faux_override.jpg') repeat-y;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
