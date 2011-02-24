@@ -255,12 +255,3 @@ a strong {
 	background: #FFF url('/eclipse.org-common/themes/Nova/images/thinModalBg.png') repeat-x;
 	padding: 5px;
 }
-
-#leftcol
-{
-	background: #e8e7dd;
-	clear: both;
-	float: left;
-	margin-right: 20px;
-	width: 185px;
-}
