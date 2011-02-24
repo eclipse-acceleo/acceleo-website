@@ -265,3 +265,12 @@ clear:none;
 	padding-bottom: 20px;
 	padding-top: 20px;
 }
+
+#downloadtoc {
+	border: 1px solid #000000;
+}
+
+#toctitle {
+	text-align: center;
+	font-weight: bold;
+}
