@@ -258,27 +258,9 @@ a strong {
 
 #leftcol
 {
-	background-color: #e8e7dd;
+	background: #e8e7dd;
+	clear: both;
 	float: left;
 	margin-right: 20px;
 	width: 185px;
-}
-
-#novaContent.faux
-{
-	background: #e8e7dd;
-	padding-bottom: 20px;
-	padding-top: 20px;
-}
-
-#midcolumn
-{
-	background: #FFF;
-	float: left;
-	margin-right: 20px;
-	width: 495px;
-}
-
-html {
-	background: #FFF;
 }
