@@ -2,47 +2,60 @@
 	<h2>Browse Repository</h2>
 	<div class="contents">
 		<p>
-			The complete source code for Acceleo is publicly available from the Eclipse.org CVS repository.
+			The complete source code for Acceleo is publicly available from the Eclipse.org Git repository.
 		</p>
 
 		<p>
 			If you just want to browse the source code from your usual web browser without checking out all the
 			project's code in your environment, you can use this link:
-			<a href="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.m2t/org.eclipse.acceleo/?root=Modeling_Project">
+			<a href="http://git.eclipse.org/c/m2t/org.eclipse.acceleo.git/">
 			Browse Acceleo source code</a>.
 		</p>
 		
 		<p>
-			In order to use the following repository location in Eclispe, copy the location URL, open the <i>CVS
-			repository exploring</i> perspective and paste it in.
+			In order to use the following repository location in Eclipse, copy the location URL, open the <i>Git repositories</i>
+			view (Window -> Show View -> Other -> Git Repository), then you can clone a repository thanks to a dedicated button in
+			the toolbar of the view. 
+		</p>
+		
+		<p>
+			In the first page of the wizard, you can enter the information of the Acceleo repository. You can just copy and paste one of
+			the location of the Acceleo repository found at the bottom of the <a href="http://git.eclipse.org/c/m2t/org.eclipse.acceleo.git/">Acceleo repository page</a>.
+			
+			<ul>
+				<li>git://git.eclipse.org/gitroot/m2t/org.eclipse.acceleo.git</li>
+				<li>ssh://git.eclipse.org/gitroot/m2t/org.eclipse.acceleo.git</li>
+				<li>http://git.eclipse.org/gitroot/m2t/org.eclipse.acceleo.git</li>
+			</ul>
+		</p>
+		
+		<p>
+			<img src="../images/git.png" title="Settings of the Acceleo repository"/>
+		</p>
+		
+		<p>
+			On the next page, you can configure the branches that you will checkout from the repository. It is recommended to checkout all the branches in order
+			to have all the source code of Acceleo.
 		</p>
 
-		<h3><span class="editsection">CVS Anonymous Access</span></h3>
-		<table>
-			<tr>
-				<td><i>Connection type:</i></td>
-				<td>pserver</td>
-			</tr>
-			<tr>
-				<td><i>User:</i></td>
-				<td>anonymous</td>
-			</tr>
-			<tr>
-				<td><i>Password:</i></td>
-				<td>[none]</td>
-			</tr>
-			<tr>
-				<td><i>Host:</i></td>
-				<td>dev.eclipse.org</td>
-			</tr>
-			<tr>
-				<td><i>Path:</i></td>
-				<td>/cvsroot/modeling</td>
-			</tr>
-			<tr>
-				<td><i>Module:</i></td>
-				<td>org.eclipse.m2t/org.eclipse.acceleo</td>
-			</tr>
-		</table>
+		<p>
+			<img src="../images/git-branches.png" title="Acceleo branches"/>
+		</p>
+		
+		<p>
+			Then you can configure where the repository will be cloned.
+		</p>
+		
+		<p>
+			<img src="../images/git-local.png" title="Local settings"/>
+		</p>
+		
+		<p>
+			After this, you can select the eclipse projects that will be imported in your workspace to start to work. 
+		</p>
+		
+		<p>
+			<img src="../images/git-import.png" title="Acceleo projects"/>
+		</p>
 	</div>
 </div>
