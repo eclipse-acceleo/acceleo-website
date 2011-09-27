@@ -1,3 +1,6 @@
+#clearHeader {
+	display: none;
+}
 #novaContent {
 	background: url("images/backgroundAcceleoEclipse.png") no-repeat white;
 }
