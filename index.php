@@ -13,5 +13,6 @@ include("script/rss2html.php");
 	$html = str_replace("%%HEADLINES%%", $news, $html);
 
 	# Generate the web page
+	$App->AddExtraHtmlHeader('<link href="https://plus.google.com/114651471803085159652/" rel="publisher" />' . "\n\t");
 	$App->generatePage($theme, $Menu, null, $pageAuthor, $pageKeywords, $pageTitle, $html);
 ?>
