@@ -29,6 +29,7 @@
 	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
 	
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
+	$App->AddExtraHtmlHeader('<link href="https://plus.google.com/114651471803085159652/" rel="publisher" />' . "\n\t");
 	
 	$App->Promotion = TRUE;
 
