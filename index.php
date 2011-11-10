@@ -14,5 +14,6 @@ include("script/rss2html.php");
 
 	# Generate the web page
 	$App->AddExtraHtmlHeader('<link href="https://plus.google.com/114651471803085159652/" rel="publisher" />' . "\n\t");
+	$App->AddExtraHtmlHeader('<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>' . "\n\t");
 	$App->generatePage($theme, $Menu, null, $pageAuthor, $pageKeywords, $pageTitle, $html);
 ?>
