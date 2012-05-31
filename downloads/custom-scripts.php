@@ -59,6 +59,17 @@
 		return "";
 	}
 	
+	function getBuildLabel($zips) {
+		// the label is the version number plus its appended alias (if any)
+		foreach ($zips as $zip) {
+			preg_match("/(\d\.\d\.\d)((M|RC)\d)?/", $zip, $matches);
+			if (sizeof($matches) > 0) {
+				return preg_replace("/(\d\.\d\.\d)((M|RC)\d)?/", "$1 $2", $matches[0]);
+			}
+		}
+		return "";
+	}
+	
 	function getTypeLabel($type) {
 		if ($type == "R") {
 			return "Release";
@@ -259,10 +270,14 @@
 		$zips_in_folder = loadDirSimple("$PWD/$branch/$ID/", "(\.zip|\.tar\.gz)", "f");
 		$archivedSite = getUpdateSiteArchive($zips_in_folder);
 		$SDKArchive = getSDKArchive($zips_in_folder);
+		$buildLabel = getBuildLabel($zips_in_folder);
+		if ($buildLabel == "" || $buildLabel == " ") {
+			$buildLabel = $branch;
+		}
 	
 		$buildHTML = "<li class=\"repo-item\">\n";
 		// PENDING add alias if any in the displayed text
-		$buildHTML .= "<b><a href=\"javascript:toggle('drop_" . $ID . "')\" class=\"drop-label\">" . $branch . " (" . $dateFormat . ")</a></b>";
+		$buildHTML .= "<b><a href=\"javascript:toggle('drop_" . $ID . "')\" class=\"drop-label\">" . $buildLabel . " (" . $dateFormat . ")</a></b>";
 		$buildHTML .= "<a name=\"" . $ID . "\" href=\"#" . $ID . "\"><img src=\"" . $websiteRoot . "/images/link_obj.gif\" alt=\"Permalink\" width=\"12\" height=\"12\"/></a>\n";
 		$buildHTML .= "<div class=\"drop\" id=\"drop_" . $ID . "\"";
 		if ($display) {
