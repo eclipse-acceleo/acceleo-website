@@ -17,7 +17,7 @@
 	$Nav->addCustomNav("Support", "/acceleo/support", "_self", 3);
 	$Nav->addCustomNav("Getting Involved", "/acceleo/developers", "_self", 3);
 	
-	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual";
+	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual, generator, code generator, emf, mofm2t, dsl, metamodel, free, open source, uml";
 	$pageAuthor		= "Obeo";
 	$pageTitle 		= "Acceleo";
 
