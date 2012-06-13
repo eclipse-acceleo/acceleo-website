@@ -18,10 +18,11 @@
 	// absolute path to the site's home page (will be used by custom-scripts for images... should probably use css instead)
 	$websiteRoot = "/acceleo";
 	
-	# version => qualifier
-	# ex : "3.3.0" => "R201205291042"
+	# version => array of qualifiers
+	# ex : "3.3.0" => array("R201205291042")
 	$hiddenBuilds = array(
-		"3.3.0" => "R201205291042"
+		"3.3.0" => array("R201205291042", "S201205221047"), #release, RC1
+		"3.2.0" => array("R201110270537") #3.2.0 release
 	);
 	#### End variables ####
 	
