@@ -31,12 +31,16 @@
 			foreach ($types as $type => $names) {
 				if ($type == "R" && isset($oldBuilds[$version][$branch][$type])) {
 					$id = $oldBuilds[$version][$branch][$type][0];
-					if (!isset($hiddenBuilds[$branch]) || !array_key_exists("R" . $id, $hiddenBuilds[$branch])) {
+					if (!isset($hiddenBuilds[$branch]) || !in_array("R" . $id, $hiddenBuilds[$branch])) {
 						$releases[$version][$branch] = $id;
 					}
 				} else if (array_key_exists($version, $oldBuilds) && array_key_exists($branch, $oldBuilds[$version]) && array_key_exists($type, $oldBuilds[$version][$branch]) && is_array($oldBuilds[$version][$branch][$type])) {
 					if (isset($hiddenBuilds[$branch])) {
-						print_r($oldBuilds[$version][$branch][$type]);
+						foreach ($hiddenBuilds as $hidden) {
+							if (in_array($hidden, $oldBuilds[$version][$branch][$type]) {
+								print_r($hidden);
+							}
+						}
 					}
 					$newBuilds[$version][$branch][$type] = $oldBuilds[$version][$branch][$type];
 					rsort($newBuilds[$version][$branch][$type]);
