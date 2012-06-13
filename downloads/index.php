@@ -10,12 +10,20 @@
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="_styles.css"/>' . "\n\t");
 	$App->AddExtraHtmlHeader('<script src="/modeling/includes/downloads.js" type="text/javascript"></script>' . "\n\t");
 	
+	#### Project dependant variables ####
 	$projectTitle = "Acceleo";
 	$pageTitle = "Acceleo - Download";
 	// Path to the downloads area under http://downloads.eclipse.org (will be used by custom-scripts and various "eclipse" scripts)
 	$PR = "modeling/m2t/acceleo";
 	// absolute path to the site's home page (will be used by custom-scripts for images... should probably use css instead)
 	$websiteRoot = "/acceleo";
+	
+	# version => qualifier
+	# ex : "3.3.0" => "R201205291042"
+	$hiddenBuilds = array(
+		"3.3.0" => "R201205291042"
+	);
+	#### End variables ####
 	
 	$PWD = getPWD("downloads/drops");
 	$branches = loadDirSimple($PWD, ".*", "d");
@@ -33,7 +41,7 @@
 	// Retrieve the list of builds from the disk (folder list only)
 	$builds = getBuildsFrom($branches, $PWD);
 	
-	$builds = reorderAndSplitBuilds($builds, $buildTypes);
+	$builds = reorderAndSplitBuilds($builds, $buildTypes, $hiddenBuilds);
 	$releases = $builds[1];
 	$builds = $builds[0];
 	

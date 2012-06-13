@@ -22,11 +22,12 @@
 		return $builds_temp;
 	}
 	
-	function reorderAndSplitBuilds($oldBuilds, $buildTypes) {
+	function reorderAndSplitBuilds($oldBuilds, $buildTypes, $hiddenBuilds) {
 		$newBuilds = array();
 		$releases = array();
 		
 		foreach ($buildTypes as $branch => $types) {
+			print_r ($buildTypes);
 			$version = substr($branch, 0, 3);
 			foreach ($types as $type => $names) {
 				if ($type == "R" && isset($oldBuilds[$version][$branch][$type])) {
