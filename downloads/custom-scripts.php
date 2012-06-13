@@ -31,6 +31,8 @@
 			foreach ($types as $type => $names) {
 				if ($type == "R" && isset($oldBuilds[$version][$branch][$type])) {
 					$id = $oldBuilds[$version][$branch][$type][0];
+					print_r("R" . $id);
+					print_r($hiddenBuilds[$branch]);
 					if (isset($hiddenBuilds[$branch]) && in_array("R" . $id, $hiddenBuilds[$branch])) {
 						# hide this one from download
 					} else {
@@ -39,8 +41,9 @@
 				} else if (array_key_exists($version, $oldBuilds) && array_key_exists($branch, $oldBuilds[$version]) && array_key_exists($type, $oldBuilds[$version][$branch]) && is_array($oldBuilds[$version][$branch][$type])) {
 					if (isset($hiddenBuilds[$branch])) {
 						foreach ($hiddenBuilds[$branch] as $hidden) {
-							if (in_array($hidden, $oldBuilds[$version][$branch][$type])) {
-								print_r($hidden);
+							$key = array_search($hidden, $oldBuilds[$version][$branch][$type]);
+							if ($key !== false) {
+								unset($oldBuilds[$version][$branch][$type], $key);
 							}
 						}
 					}
