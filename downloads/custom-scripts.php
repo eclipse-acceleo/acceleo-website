@@ -39,7 +39,7 @@
 				} else if (array_key_exists($version, $oldBuilds) && array_key_exists($branch, $oldBuilds[$version]) && array_key_exists($type, $oldBuilds[$version][$branch]) && is_array($oldBuilds[$version][$branch][$type])) {
 					if (isset($hiddenBuilds[$branch])) {
 						foreach ($hiddenBuilds[$branch] as $hidden) {
-							if (in_array($hidden, $oldBuilds[$version][$branch][$type]) {
+							if (in_array($hidden, $oldBuilds[$version][$branch][$type])) {
 								print_r($hidden);
 							}
 						}
