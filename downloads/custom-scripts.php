@@ -35,6 +35,9 @@
 						$releases[$version][$branch] = $id;
 					}
 				} else if (array_key_exists($version, $oldBuilds) && array_key_exists($branch, $oldBuilds[$version]) && array_key_exists($type, $oldBuilds[$version][$branch]) && is_array($oldBuilds[$version][$branch][$type])) {
+					if (isset($hiddenBuilds[$branch])) {
+						print_r($oldBuilds[$version][$branch][$type]);
+					}
 					$newBuilds[$version][$branch][$type] = $oldBuilds[$version][$branch][$type];
 					rsort($newBuilds[$version][$branch][$type]);
 				}
