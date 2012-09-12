@@ -224,6 +224,11 @@
 	padding: 0 100px 10px 100px;
 }
 
+#midcolumn .home {
+	width: 640px;
+	padding: 0 10px 10px 10px;
+}
+
 #rightcolumn {
 	width: 260px;
 }
