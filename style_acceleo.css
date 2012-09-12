@@ -219,9 +219,12 @@
 	padding: 5px;
 }
 
-#midcolumn .home {
+#midcolumnhome {
 	width: 640px;
 	padding: 0 10px 10px 10px;
+	background: transparent;
+	float: left;
+	margin-right: 20px;
 }
 
 #midcolumn {
