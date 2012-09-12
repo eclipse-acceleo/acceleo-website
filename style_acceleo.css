@@ -261,7 +261,7 @@ clear:none;
 
 #novaContent.faux
 {
-	background: #FFF url('images/nova_faux_override.jpg') repeat-y;
+	background: url("images/backgroundAcceleoEclipse.png") no-repeat white;
 	padding-bottom: 20px;
 	padding-top: 20px;
 }
