@@ -20,11 +20,6 @@
 	$pageAuthor		= "Obeo";
 	$pageTitle 		= "Acceleo";
 
-	$Menu->setMenuItemList(array());
-	$Menu->addMenuItem("Home", "/acceleo", "_self");
-	$Menu->addMenuItem("Download", "/acceleo/downloads", "_self");
-	$Menu->addMenuItem("Support", "/acceleo/support", "_self");
-	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
 	
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
 	
