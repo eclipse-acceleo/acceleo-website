@@ -1,5 +1,5 @@
 #midcolumn {
-	background: url('background.jpg') top left repeat-x;
+	padding-top: 10px;
 }
 
 #midcolumn li .repo-item {
