@@ -44,7 +44,8 @@
 	$releases = $builds[1];
 	$builds = $builds[0];
 	
-	$html  = "<div id=\"midcolumn\">\n";
+	$html = file_get_contents('_index.html');
+	$html .= "<div id=\"midcolumn\">\n";
 	$html .= "<ul>\n";
 	$html .= generateHTMLReleaseList($releases, $projectTitle, $PR, $PWD, $websiteRoot);
 	$html .= generateHTMLBuildList($builds, $projectTitle, $PR, $PWD, $websiteRoot);
