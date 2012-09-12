@@ -219,14 +219,14 @@
 	padding: 5px;
 }
 
+#midcolumn .home {
+	width: 640px;
+	padding: 0 10px 10px 10px;
+}
+
 #midcolumn {
 	width: 780px;
 	padding: 0 100px 10px 100px;
-}
-
-.home {
-	width: 640px;
-	padding: 0 10px 10px 10px;
 }
 
 #rightcolumn {
