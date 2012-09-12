@@ -7,19 +7,16 @@
 	$theme = "Nova";
 	
 
-	# Define your project-wide Nav bars here.
-	# Format is Link text, link URL (can be http://www.someothersite.com/), target (_self, _blank), level (1, 2 or 3)
-	# these are optional
-	$Nav->setLinkList(array());
-	$Nav->addNavSeparator("Acceleo", 	"/acceleo");
-	$Nav->addCustomNav("Download", "/acceleo/downloads", "_self", 3);
-	$Nav->addCustomNav("Support", "/acceleo/support", "_self", 3);
-	$Nav->addCustomNav("Getting Involved", "/acceleo/developers", "_self", 3);
 	
 	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual, generator, code generator, emf, mofm2t, dsl, metamodel, free, open source, uml";
 	$pageAuthor		= "Obeo";
 	$pageTitle 		= "Acceleo";
 
+	$Menu->setMenuItemList(array());
+	$Menu->addMenuItem("Home", "/acceleo", "_self");
+	$Menu->addMenuItem("Download", "/acceleo/downloads", "_self");
+	$Menu->addMenuItem("Support", "/acceleo/support", "_self");
+	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
 	
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
 	
