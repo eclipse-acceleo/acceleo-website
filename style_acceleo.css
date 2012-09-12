@@ -262,8 +262,8 @@ clear:none;
 #novaContent.faux
 {
 	background: url("images/backgroundAcceleoEclipse.png") no-repeat white;
-	padding-bottom: 20px;
-	padding-top: 20px;
+	padding-bottom: 0px;
+	padding-top: 0px;
 }
 
 #downloadtoc {

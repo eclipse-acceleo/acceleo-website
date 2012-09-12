@@ -9,9 +9,7 @@ include($App->getProjectCommon());    # All on the same line to unclutter the us
 	
 $pageTitle 		= "Acceleo - Download";
 
-	$html  = '<div id="midcolumn">';
-	$html .= file_get_contents('_index.html');
-	$html .= "</div>";
+	$html = file_get_contents('_index.html');
 
 	# Generate the web page
 	$App->generatePage($theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html);
