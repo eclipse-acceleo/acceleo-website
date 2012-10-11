@@ -61,6 +61,10 @@
 	margin: 0;
 }
 
+#primaryLinks ul .toTheRight {
+	margin-left: 150px;
+}
+
 #primaryLinks a:hover {
 	text-decoration: underline;
 	color: black;
