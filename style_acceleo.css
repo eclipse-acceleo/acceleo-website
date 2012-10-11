@@ -1,6 +1,9 @@
 #header {
 	display: none;
 }
+.toTheRight {
+	margin-left: 100px;
+}
 
 #clickToHome {
 	
