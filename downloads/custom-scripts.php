@@ -111,7 +111,7 @@
 			return "milestones";
 		}
 		if ($type == "I") {
-			return "integration";
+			return "interim";
 		}
 		if ($type == "N") {
 			return "nightly";
