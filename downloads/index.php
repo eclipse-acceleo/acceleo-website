@@ -14,7 +14,7 @@
 	$projectTitle = "Acceleo";
 	$pageTitle = "Acceleo - Download";
 	// Path to the downloads area under http://downloads.eclipse.org (will be used by custom-scripts and various "eclipse" scripts)
-	$PR = "modeling/m2t/acceleo";
+	$PR = "acceleo";
 	// absolute path to the site's home page (will be used by custom-scripts for images... should probably use css instead)
 	$websiteRoot = "/acceleo";
 	
