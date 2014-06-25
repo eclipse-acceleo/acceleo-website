@@ -5,19 +5,7 @@
 	# https://dev.eclipse.org/committers/
 	# Optional: defaults to system theme 
 	$_theme = "solstice";
-	$theme = "solstice";	
-
-	if(isset($_POST['theme'])) {
-		$_theme = $_POST['theme'];
-	}
-	if($_theme != "" && $App->isValidTheme($_theme)) {
-		setcookie("theme", $_theme);
-		$theme = $_theme;
-	}
-	else {
-		# Get theme from browser, or none default
-		$theme = $App->getUserPreferedTheme();
-	}
+	$theme = "solstice";
 	
 	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual, generator, code generator, emf, mofm2t, dsl, metamodel, free, open source, uml";
 	$pageAuthor		= "Obeo";
@@ -26,7 +14,7 @@
 	# Define your project-wide Nav bars here.
 	# Format is Link text, link URL (can be http://www.someothersite.com/), target (_self, _blank), level (1, 2 or 3)
 	# these are optional
-	$Nav->setLinkList( array() );
+	$Nav->setLinkList(array());
 	$Nav->addNavSeparator("About this project", "https://projects.eclipse.org/projects/modeling.acceleo", "", 1  );
 	$Nav->addCustomNav("Wiki", "http://wiki.eclipse.org/Acceleo", 	"_self", 2);
 	$Nav->addCustomNav("Newsgroup", "http://www.eclipse.org/forums/index.php?t=thread&frm_id=24&", "_self", 2);
