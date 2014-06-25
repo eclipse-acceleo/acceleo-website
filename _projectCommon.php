@@ -31,7 +31,7 @@
 
 	$Nav->addNavSeparator("Related Projects", "https://www.eclipse.org/modeling", "", 1  );
 	$Nav->addCustomNav("EMF", "https://www.eclipse.org/modeling/emf", "_self", 2);
-	$Nav->addCustomNav("Sirius", "https://www.eclipse.org/sirius", "_self", 2);	
+	$Nav->addCustomNav("Sirius", "https://www.eclipse.org/sirius", "_self", 2);
 	
 	# $App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
 	

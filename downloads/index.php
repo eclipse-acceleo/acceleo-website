@@ -12,7 +12,7 @@
 	
 	#### Project dependant variables ####
 	$projectTitle = "Acceleo";
-	$pageTitle = "Acceleo - Download";
+	$pageTitle = "Download";
 	// Path to the downloads area under http://downloads.eclipse.org (will be used by custom-scripts and various "eclipse" scripts)
 	$PR = "acceleo";
 	// absolute path to the site's home page (will be used by custom-scripts for images... should probably use css instead)
@@ -44,8 +44,7 @@
 	$releases = $builds[1];
 	$builds = $builds[0];
 	
-	$html = file_get_contents('_index.html');
-	$html .= "<div id=\"midcolumn\">\n";
+	$html = "<div id=\"midcolumn\">\n";
 	$html .= "<ul>\n";
 	$html .= generateHTMLReleaseList($releases, $projectTitle, $PR, $PWD, $websiteRoot);
 	$html .= generateHTMLBuildList($builds, $projectTitle, $PR, $PWD, $websiteRoot);
@@ -53,5 +52,5 @@
 	$html .= "</div>\n\n";
 	
 	# Generate the web page
-	$App->generatePage($theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html);
+	$App->generatePage($theme, $Menu, null, $pageAuthor, $pageKeywords, $pageTitle, $html);
 ?>
