@@ -15,6 +15,7 @@
 	$Menu->addMenuItem("Download", "/acceleo/downloads", "_self");
 	$Menu->addMenuItem("Support", "/acceleo/support", "_self");
 	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
+	$Menu->addMenuItem("Awards", "/acceleo/awards", "_self");
 	
 	$Nav->setLinkList(array());
 	$Nav->addNavSeparator("About this project", "https://projects.eclipse.org/projects/modeling.acceleo", "", 1  );
