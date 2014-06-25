@@ -12,7 +12,6 @@
 	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual, generator, code generator, emf, mofm2t, dsl, metamodel, free, open source, uml";
 	$pageAuthor		= "Obeo";
 	$pageTitle 		= "Acceleo";
-	$pageTitle 		= "Acceleo";
 
 	$html = file_get_contents('_index.html');
 	
