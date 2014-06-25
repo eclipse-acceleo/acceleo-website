@@ -52,5 +52,5 @@
 	$html .= "</div>\n\n";
 	
 	# Generate the web page
-	$App->generatePage($theme, $Menu, null, $pageAuthor, $pageKeywords, $pageTitle, $html);
+	$App->generatePage($theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html);
 ?>
