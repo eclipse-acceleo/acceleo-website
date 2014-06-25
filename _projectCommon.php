@@ -4,13 +4,44 @@
 	# See the Committer Tools "How Do I" for list of themes
 	# https://dev.eclipse.org/committers/
 	# Optional: defaults to system theme 
-	$theme = "Nova";
-	
+	$_theme = "solstice";
+	$theme = "solstice";	
 
+	if(isset($_POST['theme'])) {
+		$_theme = $_POST['theme'];
+	}
+	if($_theme != "" && $App->isValidTheme($_theme)) {
+		setcookie("theme", $_theme);
+		$theme = $_theme;
+	}
+	else {
+		# Get theme from browser, or none default
+		$theme = $App->getUserPreferedTheme();
+	}
 	
 	$pageKeywords	= "acceleo, dsl, modeling, domain specific language, textual, generator, code generator, emf, mofm2t, dsl, metamodel, free, open source, uml";
 	$pageAuthor		= "Obeo";
 	$pageTitle 		= "Acceleo";
+
+	# Define your project-wide Nav bars here.
+	# Format is Link text, link URL (can be http://www.someothersite.com/), target (_self, _blank), level (1, 2 or 3)
+	# these are optional
+	$Nav->setLinkList( array() );
+	$Nav->addNavSeparator("About this project", "https://projects.eclipse.org/projects/modeling.acceleo", "", 1  );
+	$Nav->addCustomNav("Wiki", "http://wiki.eclipse.org/Acceleo", 	"_self", 2);
+	$Nav->addCustomNav("Newsgroup", "http://www.eclipse.org/forums/index.php?t=thread&frm_id=24&", "_self", 2);
+	$Nav->addCustomNav("Project Plan", "https://projects.eclipse.org/projects/modeling.m2t.acceleo/documentation", "_self", 2);
+	$Nav->addCustomNav("Bugs", "https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=VERIFIED&list_id=9161179&product=Acceleo&query_format=advanced", 	"_self", 2);
+	$Nav->addCustomNav("File a Bug", "https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Acceleo", 	"_self", 2);
+
+	$Nav->addNavSeparator("Developers", "https://projects.eclipse.org/projects/modeling.m2t.acceleo/developer", "", 1  );
+	$Nav->addCustomNav("Git", "http://git.eclipse.org/c/acceleo/org.eclipse.acceleo.git/", "_self", 2);
+	$Nav->addCustomNav("Gerrit", "https://git.eclipse.org/r/#/admin/projects/acceleo/org.eclipse.acceleo", "_self", 2);
+	$Nav->addCustomNav("Mailing List", "https://dev.eclipse.org/mailman/listinfo/m2t-dev", "_self", 2);
+
+	$Nav->addNavSeparator("Related Projects", "https://www.eclipse.org/modeling", "", 1  );
+	$Nav->addCustomNav("EMF", "https://www.eclipse.org/modeling/emf", "_self", 2);
+	$Nav->addCustomNav("Sirius", "https://www.eclipse.org/sirius", "_self", 2);
 
 	$Menu->setMenuItemList(array());
 	$Menu->addMenuItem("Home", "/acceleo", "_self");
@@ -18,7 +49,7 @@
 	$Menu->addMenuItem("Support", "/acceleo/support", "_self");
 	$Menu->addMenuItem("Developers", "/acceleo/developers", "_self");
 	
-	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
+	# $App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="/acceleo/style_acceleo.css"/>' . "\n\t");
 	
 	$App->Promotion = TRUE;
 
