@@ -14,9 +14,88 @@ For those looking for a simple and fast interpreters for your EMF models, AQL ca
 * A simple and straightforward implementation easily extensible with Java classes providing extension methods.
 * A very narrow dependency surface: AQL uses the very central parts of EMF, Guava and Antlr so that we could easily deploy AQL outside of Eclipse in a server or a standalone scenario.
 
-The AQL interpreter is used in Sirius with the prefix "aql:" in Sirius.
+The AQL interpreter is used in Sirius with the prefix "aql:".
 
 h2. Language Reference
+
+h2. Using AQL programmatically
+
+This section provide information and code snippet. It will help you to integrate AQL in your own tool.
+
+h3. Creating and setting the environment
+
+To get a fresh environment you can use one of the following snippet:
+
+bc. IQueryEnvironment queryEnvironment = Query.newEnvironmentWithDefaultServices(null);
+
+To get an environment with predefined services.
+
+or
+
+bc. IQueryEnvironment queryEnvironment = Query.newEnvironment(null);
+
+To get an environment with no predefined services. It can be useful to create your own language primitives.
+
+Note that you can also provide a CrossReferenceProvider to define the scope of cross references in your environment. see CrossReferencerToAQL for more details.
+
+You can register new services Class as follow:
+
+bc. ServiceRegistrationResult registrationResult = queryEnvironment.registerServicePackage(MyServices.class);
+
+The registration result contains information about services overrides.
+
+You can also register your EPacakges. Only registered EPacakges are used to validate and evaluate AQL expression.
+
+bc. queryEnvironment.registerEPackage(MyEPackage.eINSTANCE);
+
+In some cases you might also want to create custom mappings between an EClass and its Class. A basic case is the use of EMap:
+
+bc. queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
+
+By default the EClass is mapped to Map.Entry which is not an EObject. This prevent using services on EObject.
+
+h3. Building an AQL expression
+
+The first step is building your expression from a String to an AST:
+
+bc. QueryBuilderEngine builder = new QueryBuilderEngine(queryEnvironment);
+AstResult astResult = builder.build("self.name");
+
+h3. Evaluating an AQL expression
+
+To evaluate an AQL expression you can use the QueryEvaluationEngine
+
+bc. QueryEvaluationEngine engine = new QueryEvaluationEngine(queryEnvironment);
+Map<String, Object> variables = Maps.newHashMap();
+variables.put("self", EcorePackage.eINSTANCE);
+EvaluationResult evaluationResult = engine.eval(astResult, variables);
+
+Here we only use one variable for demonstration purpose.
+
+h3. Validating an AQL expression (optional)
+
+This step is optional for evaluation. You can evaluate an AQL expression without validating it in the first place.
+
+bc. Map<String, Set<IType>> variableTypes = new LinkedHashMap<String, Set<IType>>();
+Set<IType> selfTypes = new LinkedHashSet<IType>();
+selfTypes.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEPackage()));
+variableTypes.put("self", selfTypes);
+AstValidator validator = new AstValidator(queryEnvironment, variableTypes);
+IValidationResult validationResult = validator.validate(astResult);
+
+h3. Completing an AQL expression
+
+To do this use the QueryCompletionEngine, it will build the query and validate it for you. It will also compute needed prefix and suffix if any:
+
+bc. Map<String, Set<IType>> variableTypes = new LinkedHashMap<String, Set<IType>>();
+Set<IType> selfTypes = new LinkedHashSet<IType>();
+selfTypes.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEPackage()));
+variableTypes.put("self", selfTypes);
+QueryCompletionEngine engine = new QueryCompletionEngine(queryEnvironment);
+ICompletionResult completionResult = engine.getCompletion("self.", 5, variableTypes);
+List<ICompletionProposal> proposals = completionResult.getProposals(new BasicFilter(completionResult));
+
+Here 5 is the offset where the completion should be computed in the given expression.
 
 h2. Migrating from MTL queries
 
@@ -24,21 +103,25 @@ As languages, AQL and MTL are very close yet there are some notable differences:
 
 h3. Implicit variable references
 
-There is no implicit variable reference. With this change, you can easily find out if you are using a feature of an object or a string representation of said object. As a result, instead of using "[something/]", you must use "aql:self.something" if you want to access the feature named "something" of the current object or "aql:something" if you want to retrieve the object named something.
+There is no implicit variable reference. With this change, you can easily find out if you are using a feature of an object or a string representation of said object. As a result, instead of using "[something/]", you must use "self.something" if you want to access the feature named "something" of the current object or "something" if you want to retrieve the object named something.
 
-In a lambda expression, you must now define the name of the variable used for the iteration in order to easily identify which variable is used by an expression. In Acceleo MTL, you can write "aql:Sequence{self}->collect(eAllContents(uml::Property))" and Acceleo will use the implicit iterator as a source of the operation eAllContents.
+In a lambda expression, you must now define the name of the variable used for the iteration in order to easily identify which variable is used by an expression. In Acceleo MTL, you can write "Sequence{self}->collect(eAllContents(uml::Property))" and Acceleo will use the implicit iterator as a source of the operation eAllContents.
 
-The problem comes when using a lambda like "aql:Sequence{self}->collect(something)", we can't know if "something" is a feature of "self" or if it is another variable.
+The problem comes when using a lambda like "Sequence{self}->collect(something)", we can't know if "something" is a feature of "self" or if it is another variable.
 
 Using AQL, you will now have to write either "collect(m | m.eAllContents(uml::Property))" or "collect(m: uml::Model | eAllContents(uml::Property))".
 
 h3. Collect and flatten
 
-Auto-collect and auto-flatten, there is no such thing as a Sequence of Sequence in AQL instead everything is flattened by default.
+When a call or a feature acces is done on a collection the result is flattened for the first level. For instance a service returning a collection called on a collection will return a collection of elements and not a collection of collection of elements.
 
 h3.  Type literals & child EPackages
 
-Type literals can't be in the form someEPackage::someSubEPackage::SomeEClass but instead someSubEPackage::SomeEClass should be directly used.
+Type literals can't be in the form someEPackage::someSubEPackage::SomeEClass but instead someSubEPackage::SomeEClass should be directly used. Note that the name of the EPackage is now mandatory.
+
+h3.  Type literals & child EPackages
+
+Enumeration literal should be prefixed with the name of the containing EPacakge for instance "myPacakge::myEnum::value".
 
 h3. Collections
 
@@ -46,7 +129,7 @@ You can only have Sequences or OrderedSets as collections and as such the order 
 
 By careful reviewing the use of those collections in various Acceleo generators and Sirius Designers we have quickly find out that the lack of determinism in the order of the collections Sets and Bags was a mojor issue for our users. As a result, only two collections remain, the Sequence which can contain any kind of element and the OrderedSet which has a similar behavior except that it does not accept duplicates.
 
-Previously in Acceleo MTL, you could transform a literal into a collection by using the operator "->" on the literal directly. Now you will have to declare a collection properly in order to explicitly indicate the type of the collection desired. In Acceleo MTL, the collection created was a Bag which is not available anymore. It is recommended to use a sequence by default. With AQL, you will now write "aql:Sequence{self}" or "aql:OrderedSet{self}".
+Previously in Acceleo MTL, you could transform a literal into a collection by using the operator "->" on the literal directly. In Acceleo MTL, the collection created was a Bag which is not available anymore. It is recommended to use the extension notation like "Sequence{self}" or "OrderedSet{self}". By default in AQL the created collection is an OrderedSet.
 
 h3. Renamed operations
 
@@ -54,7 +137,7 @@ Some operations have been renamed. As such "addAll" and "removeAll" have been re
 
 h3. Typing
 
-AQL is way smarter than MTL regarding to the types of your expressions. As a result, you can combine expressions using multiple types quite easily. For example, this is a valid AQL expression "aql:self.eContents(uml::Class).add(self.eContents(ecore::EClass)).name". In Acceleo MTL, we could not use this behavior because Acceleo MTL had to fall back to the concept EObject which does not have a feature "name" while AQL knows that the collection contains objects that are either "uml::Class" or "ecore::EClass" and both of those types have a feature named "name".
+AQL is way smarter than MTL regarding to the types of your expressions. As a result, you can combine expressions using multiple types quite easily. For example, this is a valid AQL expression "self.eContents(uml::Class).add(self.eContents(ecore::EClass)).name". In Acceleo MTL, we could not use this behavior because Acceleo MTL had to fall back to the concept EObject which does not have a feature "name" while AQL knows that the collection contains objects that are either "uml::Class" or "ecore::EClass" and both of those types have a feature named "name".
 
 h2. Migrating from Acceleo2 queries
 
@@ -66,6 +149,6 @@ h3. Types and cast
 
 In order to test the type of an EObject, a common pattern in Acceleo 2 was to treat the EObject as a collection and filter said collection on the type desired to see if the size of the collection changed. In AQL, you have access to the operations oclIsTypeOf and oclIsKindOf. You can thus test the type of an EObject with the expression "eObject.oclIsKindOf(ecore::EStructuralFeature)" or "eObject.oclIsTypeOf(ecore::EAttribute)". You can use the operation oclIsKindOf to test if an object has the type of the given parameter or one of its subtype. On the other hand, you can use the operation oclIsTypeOf to test if an object has exactly the type of the given parameter.
 
-Casting in AQL is useless, since AQL is very understandable whtn it comes to types, it will always tries its best to evaluate your expression.
+Casting in AQL is useless, since AQL is very understandable when it comes to types, it will always tries its best to evaluate your expression.
 
 Since AQL is very close to Acceleo MTL, you can find some additional documentation using the Acceleo equivalence documentation in the "Acceleo documentation":http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.acceleo.doc%2Fdoc%2Fhtml%2Facceleo_equivalence.html.
