@@ -1,4 +1,3 @@
-
 h1. Acceleo Query Language (AQL)
 
 h2. Introduction
@@ -7,7 +6,7 @@ The Acceleo Query Language, AQL, is a new query interpreter created to replace t
 
 For those looking for a simple and fast interpreters for your EMF models, AQL can provide you with a lot of features, including:
 
-* Support for static and dynamic Ecore models, no compilation phase required.
+* Support for static and dynamic Ecore models, no query compilation phase required.
 * The least possible overhead at evaluation time. During this phase, the evaluation goes forward and will not even try to validate or compile your expressions. Errors are tracked and captured along the way.
 * Strong validation: types are checked at validation time and the metamodels used are analyzed to do some basic type inference and avoid false positive errors.
 * Union types: In some context, a variable in a given query can have N potential types with N being often greater than one. AQL can embrace this fact without having to fall back to EObject as soon as there is more than one type.
@@ -36,7 +35,7 @@ bc. IQueryEnvironment queryEnvironment = Query.newEnvironment(null);
 
 To get an environment with no predefined services. It can be useful to create your own language primitives.
 
-Note that you can also provide a CrossReferenceProvider to define the scope of cross references in your environment. see CrossReferencerToAQL for more details.
+Note that you can also provide a CrossReferenceProvider to define the scope of cross references in your environment. See CrossReferencerToAQL for more details.
 
 You can register new services Class as follow:
 
@@ -44,7 +43,7 @@ bc. ServiceRegistrationResult registrationResult = queryEnvironment.registerServ
 
 The registration result contains information about services overrides.
 
-You can also register your EPacakges. Only registered EPacakges are used to validate and evaluate AQL expression.
+You can also register your EPackages. Only registered EPackages are used to validate and evaluate AQL expression.
 
 bc. queryEnvironment.registerEPackage(MyEPackage.eINSTANCE);
 
@@ -52,7 +51,7 @@ In some cases you might also want to create custom mappings between an EClass an
 
 bc. queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
 
-By default the EClass is mapped to Map.Entry which is not an EObject. This prevent using services on EObject.
+By default the EClass is mapped to Map.Entry which is not an EObject. This prevents using services on EObject.
 
 h3. Building an AQL expression
 
@@ -115,11 +114,11 @@ h3. Collect and flatten
 
 When a call or a feature acces is done on a collection the result is flattened for the first level. For instance a service returning a collection called on a collection will return a collection of elements and not a collection of collection of elements.
 
-h3.  Type literals & child EPackages
+h3.  Type literals & children EPackages
 
 Type literals can't be in the form someEPackage::someSubEPackage::SomeEClass but instead someSubEPackage::SomeEClass should be directly used. Note that the name of the EPackage is now mandatory.
 
-h3.  Type literals & child EPackages
+h3.  Type literals & children EPackages
 
 Enumeration literal should be prefixed with the name of the containing EPacakge for instance "myPacakge::myEnum::value".
 
@@ -127,7 +126,7 @@ h3. Collections
 
 You can only have Sequences or OrderedSets as collections and as such the order of their elements is always deterministic. In Acceleo MTL, you had access to Sets, which are now OrderedSets and Bags, which are now Sequences. Those four kinds of collections were motivated by the fact that Sequence and OrderedSet were ordered contrary to Sets and Bags. On another side, OrderedSets and Sets did not accept any duplicate contrary to Bags and Sequences.
 
-By careful reviewing the use of those collections in various Acceleo generators and Sirius Designers we have quickly find out that the lack of determinism in the order of the collections Sets and Bags was a mojor issue for our users. As a result, only two collections remain, the Sequence which can contain any kind of element and the OrderedSet which has a similar behavior except that it does not accept duplicates.
+By careful reviewing the use of those collections in various Acceleo generators and Sirius Designers we have quickly found out that the lack of determinism in the order of the collections Sets and Bags was a major issue for our users. As a result, only two collections remain, the Sequence which can contain any kind of element and the OrderedSet which has a similar behavior except that it does not accept duplicates.
 
 Previously in Acceleo MTL, you could transform a literal into a collection by using the operator "->" on the literal directly. In Acceleo MTL, the collection created was a Bag which is not available anymore. It is recommended to use the extension notation like "Sequence{self}" or "OrderedSet{self}". By default in AQL the created collection is an OrderedSet.
 
@@ -143,7 +142,7 @@ h2. Migrating from Acceleo2 queries
 
 h3. EClassifier references
 
-All the operation referencing a type are now using a type literal with the name of the EPackage and the name of the type instead of a string with the name of the type. As a result, "eObject.eAllContents('EClass')" would be translated using "eObject.eAllContents('ecore::EClass'). This allow AQL to now in which EPackage to look for the type and as such, it improves the quality of the validation.
+All operations referencing a type are now using a type literal with the name of the EPackage and the name of the type instead of a string with the name of the type. As a result, "eObject.eAllContents('EClass')" would be translated using "eObject.eAllContents('ecore::EClass'). This allows AQL to now in which EPackage to look for the type and as such, it improves the quality of the validation.
 
 h3. Types and cast
 
