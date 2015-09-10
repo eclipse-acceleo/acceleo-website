@@ -17,6 +17,17 @@ The AQL interpreter is used in Sirius with the prefix "aql:".
 
 h2. Language Reference
 
+These sections are listing all the services of the standard library of AQL.
+
+* "Services available for all types":./reference/aql_service_anyservices.html
+* "Services available for Booleans":./reference/aql_service_booleanservices.html
+* "Services available for Collections":./reference/aql_service_collectionservices.html
+* "Services available for Comparables":./reference/aql_service_comparableservices.html
+* "Services available for EObjects":./reference/aql_service_eobjectservices.html
+* "Services available for Resources and URIs":./reference/aql_service_resourceservices.html
+* "Services available for Strings":./reference/aql_service_stringservices.html
+
+
 h2. Using AQL programmatically
 
 This section provide information and code snippet. It will help you to integrate AQL in your own tool.
