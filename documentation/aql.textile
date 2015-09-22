@@ -32,6 +32,31 @@ h2. Using AQL programmatically
 
 This section provide information and code snippet. It will help you to integrate AQL in your own tool.
 
+Simple overview of AQL:
+
+!../images/aql/AQL_overview.png! 
+
+h3. Type validation
+
+For each node of the AST we create a set of possible types as follow:
+* for a VarRef we ask the environment for its possible types
+* for a FeatureAccess we look up the type of the feature in the registered metamodels
+* for a Call we look up the the service in the service registry according to the possible types of its parameters (receiver is the first parameter). At this point there is a conversion from EMF to Java. The return type of the service is given by the IService.getType() method. At this point the there is a conversion form Java to EMF, one Java type can correspond to more than one EMF EClassifier. If no service can be found we try to find a corresponding EOperation if the receiver is an EObject.
+
+A special type NothingType is used to mark a problem on a given node of the AST. Those NothingTypes are then used to create validation messages. If an AST node has only NothingTypes validation messages will be set as errors for this node, otherwise they are set as warnings.
+
+h3. Completion
+
+The completion rely on the AST production and the type validation.
+The identifier fragments preceding (prefix) and following (remaining) the cursor position are removed from the expression to parse. The prefix and remaining are used later to filter the proposals. Many filters can be implemented: filter only on prefix, filter on prefix and remaining, same strategies with support for camel case, ...
+
+Completion on the AST:
+* if there is no error node in the AST the completion provide any symbols that can follow an expression ("+", "-", ...).
+* if there is an ErrorExpression node in the AST the completion provides anything that can prefix an expression ("not", "-", variable name, type name, ...).
+* if there is an ErrorFeatureAccesOrCall node in the AST the completion provides feature and service names corresponding to the receiver possible types. It also possible to add symbols that follow an expression if the prefix and remaining are already a valid feature or service name for the receiver possible types.
+* if there is an ErrorCollectionCall node in the AST the completion provides collection service names. It also possible to add symbols that follow an expression if the prefix and remaining are already a valid service name.
+* if there is an ErrorTypeLiteral node in the AST the completion provides EClassifier, EEnumLiteral names according to the state of the type description.
+
 h3. Creating and setting the environment
 
 To get a fresh environment you can use one of the following snippet:
