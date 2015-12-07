@@ -174,6 +174,10 @@ h3. Typing
 
 AQL is way smarter than MTL regarding to the types of your expressions. As a result, you can combine expressions using multiple types quite easily. For example, this is a valid AQL expression "self.eContents(uml::Class).add(self.eContents(ecore::EClass)).name". In Acceleo MTL, we could not use this behavior because Acceleo MTL had to fall back to the concept EObject which does not have a feature "name" while AQL knows that the collection contains objects that are either "uml::Class" or "ecore::EClass" and both of those types have a feature named "name".
 
+h3. null handling
+
+AQL handles null (OclVoid) differently from ocl, so "oclIsUndefined" should be mostly useless for AQL expressions. For example, "null.oclIsKindOf(ecore::EClass)" would have returned true for MTL/OCL, forcing users to use "not self.oclIsUndefined() and self.oclIsKindOf(ecore::EClass) instead. This is no longer true in AQL, where "null" doesn't conform to any type, so "null.oclIsKindOf(ecore::EClass)" will return false. Note that it's still possible to "cast" null in any given classifier. "null.oclAsType(ecore::EClass)" will not fail at runtime.
+
 h2. Migrating from Acceleo2 queries
 
 h3. EClassifier references
