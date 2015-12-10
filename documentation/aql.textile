@@ -190,4 +190,4 @@ In order to test the type of an EObject, a common pattern in Acceleo 2 was to tr
 
 Casting in AQL is useless, since AQL is very understandable when it comes to types, it will always tries its best to evaluate your expression.
 
-Since AQL is very close to Acceleo MTL, you can find some additional documentation using the Acceleo equivalence documentation in the "Acceleo documentation":http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.acceleo.doc%2Fdoc%2Fhtml%2Facceleo_equivalence.html.
+Since AQL is very close to Acceleo MTL, you can find some additional documentation using the Acceleo equivalence documentation in the "Acceleo documentation":http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.acceleo.doc%2Fpages%2Freference%2Fmigration.html&cp=5_3_4.
