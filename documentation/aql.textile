@@ -15,6 +15,66 @@ For those looking for a simple and fast interpreters for your EMF models, AQL ca
 
 The AQL interpreter is used in Sirius with the prefix "aql:".
 
+h2. Syntax
+
+This section describes the syntax of an AQL expression.
+
+h3. References
+
+|<. _variable_name_ |a reference to a variable| myVariable |
+|<. _expression_ *.* _feature_name_ |implicit collect| eClass.name |
+|<. _expression_ *.* _service_name_*(* ( _expression_ (*,* _expression_ ) * ) ? *)* |implicit collect| myVariable.toString() |
+|<. _expression_ *->* _service_name_*(* ( _expression_ (*,* _expression_ ) * ) ? *)* |call on the collection itself it the expression is not a collection it will be wrapped into an ordered set| mySequence->sep(',') |
+
+h3. Operators
+
+|<. *not* _expression_ |call the not service| not eClass.interface |
+|<. *-* _expression_ |call the unaryMin service| -3 |
+|<. _expression_ *+* _expression_ |call the add service| 2 + 2 |
+|<. _expression_ *-* _expression_ |call the sub service| 2 - 2 |
+|<. _expression_ *&#42;* _expression_ |call the mult service| 2 * 2 |
+|<. _expression_ *&#47;* _expression_ |call the divOp service| 2 / 2 |
+|<. _expression_ *<=* _expression_ |call the lessThanEqual service| 2 <= 2 |
+|<. _expression_ *>=* _expression_ |call the greaterThanEqual service| 2 >= 2 |
+|<. _expression_ *<* _expression_ |call the lessThan service| 1 < 2 |
+|<. _expression_ *>* _expression_ |call the greaterThan service| 2 > 1 |
+|<. _expression_ *<>* _expression_  |call the differs service| 1 <> 2 |
+|<. _expression_ *!=* _expression_  |call the differs service| 1 != 2 |
+|<. _expression_ *=* _expression_  |call the equals service| 1 = 1 |
+|<. _expression_ *and* _expression_ |call the and service| eClass.interface and eClass.abstact |
+|<. _expression_ *or* _expression_ |call the or service| eClass.interface or eClass.abstact |
+|<. _expression_ *xor* _expression_ |call the xor service| eClass.interface xor eClass.abstact |
+|<. _expression_ *implies* _expression_ |call implies service| eClass.interface implies eClass.abstact |
+
+h3. Structures
+
+|<. *(* _expression_ *)* | parenthesis are used to change priority during evaluation | (2 + 2 ) * 3 |
+|<. *if* _expression_ *then* _expression_ *else* _expression_ *endif* | conditional expression | if eClass.abstract then 'blue' else 'red' endif | 
+|<. *let* _new_variable_name_ (*:* _type_literal_)? (*,* _new_variable_name_ (*:* _type_literal_)?)* *in* _expression_ | let allows to define variables in order to factorise expression | let container = self.eContainer() in container.eAllContents() |
+
+h3. Literals
+
+|<. *'* _escaped_string_ *'* |you can use java style escape sequence *\u0000* *\x00* *\\* *\'*  *\b* *\t* *\n* ...| 'TODO list:\n\t- walk the dog\n\t- make diner' |
+|<. [*0* - *9*]+ |an integer| 100 |
+|<. [*0* - *9*]+ *.* [*0* - *9*]+ |a real| 3.14 |
+|<. *true* |the boolean value true| true |
+|<. *false* |the boolean value false| false |
+|<. *null* |the null value| null |
+|<. *Sequence{* (_expression_ (*,* _expression_) * ) ? *}* | a sequence defined in extension | Sequence{1, 2, 3, 3} |
+|<. *OrderedSet{* (_expression_ (*,* _expression_) * ) ? *}* | an ordered set defined in extension | OrderedSet{1, 2, 3} |
+|<. _epackage_name_ *::* _eenum_name_ *::* _eenum_literal_name_ | an EEnumLiteral| art::Color::blue |
+
+h3. Type literals
+
+|<. *String* | the string type | String |
+|<. *Integer* | the integer type | Integer |
+|<. *Real* | the real type | Real |
+|<. *Boolean* | the string type | Boolean |
+|<. *Sequence(* _type_litral_ *)* | a sequence type | Sequence(String) |
+|<. *OrderedSet(* _type_litral_ *)* | an ordered set type | OrderedSet(String) |
+|<. _epackage_name_ *::* _eclassifier_name_ | an eclassifier type | ecore::EPackage |
+|<. *{* _epackage_name_ *::* _eclassifier_name_ (*|* _epackage_name_ *::* _eclassifier_name_) * *}* | a set of eclassifiers | {ecore::EPackage &#124; ecore::EClass} |
+
 h2. Language Reference
 
 These sections are listing all the services of the standard library of AQL.
