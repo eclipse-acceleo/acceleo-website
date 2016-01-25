@@ -229,3 +229,20 @@ form.well {
 code,pre {
 	color: #25587E;
 }
+
+
+body {
+    line-height: 24px;
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+
+p {
+    line-height: 24px;
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
