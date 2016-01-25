@@ -310,29 +310,6 @@
         </p>
         <hr />
 
-        <h3>lastIndex(self: java.lang.String, subString: java.lang.String) = Integer</h3>
-        <p>
-          Returns the index of the last occurrence of "subString" in the current String, "-1" if the current String doesn't contain this particular substring. The index referential is 1 as in OCL and not 0.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>'HelloHello'.lastIndex('World')</td>
-              <td>6</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>lastIndex(self: java.lang.String, subString: java.lang.String, indexString: java.lang.Integer) = Integer</h3>
         <p>
           Returns the index of the last occurrence "subString" in the current String searching backward from the given index, or -1 if "subString" is not in the current String. The index referential is 1 as in OCL and not 0.
@@ -348,6 +325,29 @@
             <tr>
               <td>'HelloHello'.lastIndex('Hello', 7)</td>
               <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>lastIndex(self: java.lang.String, subString: java.lang.String) = Integer</h3>
+        <p>
+          Returns the index of the last occurrence of "subString" in the current String, "-1" if the current String doesn't contain this particular substring. The index referential is 1 as in OCL and not 0.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>'HelloHello'.lastIndex('World')</td>
+              <td>6</td>
             </tr>
           </tbody>
         </table>
@@ -782,29 +782,6 @@
         </p>
         <hr />
 
-        <h3>tokenize(self: java.lang.String) = List</h3>
-        <p>
-          Splits the current String by whitespace delimiter into a collection of String
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>'a, b, c, d'.tokenize()</td>
-              <td>['a,', 'b,', 'c,', 'd']</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>tokenize(self: java.lang.String, delimiter: java.lang.String) = List</h3>
         <p>
           Splits the current String by using the given "delimiter" into a collection of String
@@ -820,6 +797,29 @@
             <tr>
               <td>'a, b, c, d'.tokenize(', ')</td>
               <td>['a', 'b', 'c', 'd']</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>tokenize(self: java.lang.String) = List</h3>
+        <p>
+          Splits the current String by whitespace delimiter into a collection of String
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>'a, b, c, d'.tokenize()</td>
+              <td>['a,', 'b,', 'c,', 'd']</td>
             </tr>
           </tbody>
         </table>

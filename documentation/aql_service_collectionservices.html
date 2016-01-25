@@ -49,47 +49,7 @@
       <h1>Services available for Collections</h1>
     </div>
 
-        <h3>add(set: java.util.Set, collection: java.util.Collection) = Set</h3>
-        <p>
-          Returns the concatenation of the given collection into the current set.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}.add(OrderedSet{'c', 'b', 'f'})</td>
-              <td>OrderedSet{'a', 'b', 'c', 'c', 'b', 'f'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          The service addAll has been replaced by "add" in order to have access to the operator "+" between to sets
-        </p>
-        <h4>In other languages</h4>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Language</th>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>Acceleo 3 (MTL)</td>
-              <td>OrderedSet{'a', 'b', 'c'}.addAll(OrderedSet{'c', 'b', 'f'})</td>
-              <td>OrderedSet{'a', 'b', 'c', 'c', 'b', 'f'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-
-        <h3>add(sequence1: java.util.List, collection2: java.util.Collection) = List</h3>
+        <h3>add(sequence: java.util.List, collection: java.util.Collection) = List</h3>
         <p>
           Returns the concatenation of the given collection into the given sequence.
         </p>
@@ -133,6 +93,46 @@
               <td>Acceleo 3 (MTL)</td>
               <td>Sequence{'a', 'b', 'c'}.addAll(OrderedSet{'c', 'e'})</td>
               <td>Sequence{'a', 'b', 'c', 'c', 'e'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+
+        <h3>add(set: java.util.Set, collection: java.util.Collection) = Set</h3>
+        <p>
+          Returns the concatenation of the given collection into the current set.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}.add(OrderedSet{'c', 'b', 'f'})</td>
+              <td>OrderedSet{'a', 'b', 'c', 'c', 'b', 'f'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The service addAll has been replaced by "add" in order to have access to the operator "+" between to sets
+        </p>
+        <h4>In other languages</h4>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Language</th>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>Acceleo 3 (MTL)</td>
+              <td>OrderedSet{'a', 'b', 'c'}.addAll(OrderedSet{'c', 'b', 'f'})</td>
+              <td>OrderedSet{'a', 'b', 'c', 'c', 'b', 'f'}</td>
             </tr>
           </tbody>
         </table>
@@ -269,29 +269,6 @@
         </p>
         <hr />
 
-        <h3>collect(set: java.util.Set, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = Set</h3>
-        <p>
-          Returns a set containing the result of applying "lambda" on all elements contained in the current set, maintaining order.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->collect(str | str.toUpper())</td>
-              <td>OrderedSet{'A', 'B', 'C'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>collect(sequence: java.util.List, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = List</h3>
         <p>
           Returns a sequence containing the result of applying "lambda" on all elements contained in the current sequence, maintaining order.
@@ -315,9 +292,32 @@
         </p>
         <hr />
 
-        <h3>concat(sequence1: java.util.List, sequence2: java.util.Collection) = List</h3>
+        <h3>collect(set: java.util.Set, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = Set</h3>
         <p>
-          Returns the concatenation of the two specified sequences.
+          Returns a set containing the result of applying "lambda" on all elements contained in the current set, maintaining order.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}->collect(str | str.toUpper())</td>
+              <td>OrderedSet{'A', 'B', 'C'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>concat(sequence: java.util.List, collection: java.util.Collection) = List</h3>
+        <p>
+          Returns the concatenation of the current sequence with the given collection.
         </p>
         <table class="table table-striped table-bordered table-condensed">
           <thead>
@@ -355,33 +355,6 @@
         </table>
         <hr />
 
-        <h3>count(set: java.util.Set, object: java.lang.Object) = Integer</h3>
-        <p>
-          Returns "1" if the current set contains the given object, "0" otherwise.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->count('d')</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->count('a')</td>
-              <td>1</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>count(sequence: java.util.List, object: java.lang.Object) = Integer</h3>
         <p>
           Counts the number of occurrences of the given object in the given sequence
@@ -400,6 +373,33 @@
             </tr>
             <tr>
               <td>Sequence{'a', 'b', 'c'}->count('a')</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>count(set: java.util.Set, object: java.lang.Object) = Integer</h3>
+        <p>
+          Returns "1" if the current set contains the given object, "0" otherwise.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}->count('d')</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}->count('a')</td>
               <td>1</td>
             </tr>
           </tbody>
@@ -532,9 +532,9 @@
         </p>
         <hr />
 
-        <h3>filter(set: java.util.Set, eClassifier: org.eclipse.emf.ecore.EClass) = Set</h3>
+        <h3>filter(sequence: java.util.List, eClassifiers: java.util.Set) = List</h3>
         <p>
-          Keeps only instances of the given EClassifier from the given set.
+          Keeps only instances of the given EClassifier in the given sequence.
         </p>
         <table class="table table-striped table-bordered table-condensed">
           <thead>
@@ -545,12 +545,12 @@
           </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
           <tbody>
             <tr>
-              <td>OrderedSet{anEClass, anEAttribute, anEReference}->filter(ecore::EClass)</td>
-              <td>OrderedSet{anEClass}</td>
+              <td>Sequence{anEClass, anEAttribute, anEReference}->filter({ecore::EClass | ecore::EReference})</td>
+              <td>Sequence{anEClass, anEReference}</td>
             </tr>
             <tr>
-              <td>OrderedSet{anEClass, anEAttribute}->filter(ecore::EStructuralFeature)</td>
-              <td>OrderedSet{anEAttribute}</td>
+              <td>Sequence{anEClass, anEAttribute, anEPackage}->filter({ecore::EStructuralFeature | ecore::EPacakge})</td>
+              <td>Sequence{anEAttribute, anEPackage}</td>
             </tr>
           </tbody>
         </table>
@@ -578,6 +578,60 @@
             <tr>
               <td>Sequence{anEClass, anEAttribute}->filter(ecore::EStructuralFeature)</td>
               <td>Sequence{anEAttribute}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>filter(set: java.util.Set, eClassifiers: java.util.Set) = Set</h3>
+        <p>
+          Keeps only instances of the given set of EClassifier from the given set.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{anEClass, anEAttribute, anEReference}->filter({ecore::EClass | ecore::EReference})</td>
+              <td>OrderedSet{anEClass, anEReference}</td>
+            </tr>
+            <tr>
+              <td>OrderedSet{anEClass, anEAttribute, anEPackage}->filter({ecore::EStructuralFeature | ecore::EPacakge})</td>
+              <td>OrderedSet{anEAttribute, anEPackage}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>filter(set: java.util.Set, eClassifier: org.eclipse.emf.ecore.EClassifier) = Set</h3>
+        <p>
+          Keeps only instances of the given EClassifier from the given set.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{anEClass, anEAttribute, anEReference}->filter(ecore::EClass)</td>
+              <td>OrederedSet{anEClass}</td>
+            </tr>
+            <tr>
+              <td>OrderedSet{anEClass, anEAttribute}->filter(ecore::EStructuralFeature)</td>
+              <td>OrederedSet{anEAttribute}</td>
             </tr>
           </tbody>
         </table>
@@ -690,29 +744,6 @@
         </p>
         <hr />
 
-        <h3>including(set: java.util.Set, object: java.lang.Object) = Set</h3>
-        <p>
-          Adds the given object to the current set.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->including('d')</td>
-              <td>OrderedSet{'a', 'b', 'c', 'd'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>including(sequence: java.util.List, object: java.lang.Object) = List</h3>
         <p>
           Adds the given object to the current sequence.
@@ -728,6 +759,29 @@
             <tr>
               <td>Sequence{'a', 'b', 'c'}->including('d')</td>
               <td>Sequence{'a', 'b', 'c', 'd'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>including(set: java.util.Set, object: java.lang.Object) = Set</h3>
+        <p>
+          Adds the given object to the current set.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}->including('d')</td>
+              <td>OrderedSet{'a', 'b', 'c', 'd'}</td>
             </tr>
           </tbody>
         </table>
@@ -982,29 +1036,6 @@
         </p>
         <hr />
 
-        <h3>reject(set: java.util.Set, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = Set</h3>
-        <p>
-          Reject returns a filtered version of the specified set. Only elements for which the given "lambda" evaluates to false will be present in the returned set
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->reject(str | str.equals('a'))</td>
-              <td>OrderedSet{'b', 'c'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>reject(sequence: java.util.List, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = List</h3>
         <p>
           Reject returns a filtered version of the specified sequence. Only elements for which the given "lambda" evaluates to false will be present in the returned sequence
@@ -1028,9 +1059,9 @@
         </p>
         <hr />
 
-        <h3>reverse(set: java.util.Set) = Set</h3>
+        <h3>reject(set: java.util.Set, lambda: org.eclipse.acceleo.query.runtime.impl.LambdaValue) = Set</h3>
         <p>
-          Returns the given set in reversed order.
+          Reject returns a filtered version of the specified set. Only elements for which the given "lambda" evaluates to false will be present in the returned set
         </p>
         <table class="table table-striped table-bordered table-condensed">
           <thead>
@@ -1041,8 +1072,8 @@
           </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
           <tbody>
             <tr>
-              <td>OrderedSet{'a', 'b', 'c'}->reverse()</td>
-              <td>OrderedSet{'c', 'b', 'a'}</td>
+              <td>OrderedSet{'a', 'b', 'c'}->reject(str | str.equals('a'))</td>
+              <td>OrderedSet{'b', 'c'}</td>
             </tr>
           </tbody>
         </table>
@@ -1066,6 +1097,29 @@
             <tr>
               <td>Sequence{'a', 'b', 'c'}->reverse()</td>
               <td>Sequence{'c', 'b', 'a'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>reverse(set: java.util.Set) = Set</h3>
+        <p>
+          Returns the given set in reversed order.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}->reverse()</td>
+              <td>OrderedSet{'c', 'b', 'a'}</td>
             </tr>
           </tbody>
         </table>
@@ -1220,7 +1274,47 @@
         </p>
         <hr />
 
-        <h3>sub(sequence1: java.util.List, collection2: java.util.Collection) = List</h3>
+        <h3>sub(set: java.util.Set, collection: java.util.Collection) = Set</h3>
+        <p>
+          Returns the difference of the current set and the given collection.
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>OrderedSet{'a', 'b', 'c'}.sub(OrderedSet{'c', 'b', 'f'})</td>
+              <td>OrderedSet{'a'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The service removeAll has been replaced by "sub" in order to have access to the operator "-" between to sets
+        </p>
+        <h4>In other languages</h4>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Language</th>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>Acceleo 3 (MTL)</td>
+              <td>OrderedSet{'a', 'b', 'c'}.removeAll(OrderedSet{'c', 'b', 'f'})</td>
+              <td>OrderedSet{'a'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+
+        <h3>sub(sequence: java.util.List, collection: java.util.Collection) = List</h3>
         <p>
           Returns the difference of the current sequence and the given collection.
         </p>
@@ -1264,46 +1358,6 @@
               <td>Acceleo 3 (MTL)</td>
               <td>Sequence{'a', 'b', 'c'}.removeAll(OrderedSet{'c', 'b', 'f'})</td>
               <td>Sequence{'a'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-
-        <h3>sub(set1: java.util.Set, collection2: java.util.Collection) = Set</h3>
-        <p>
-          Returns the difference of the current set and the given collection.
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>OrderedSet{'a', 'b', 'c'}.sub(OrderedSet{'c', 'b', 'f'})</td>
-              <td>OrderedSet{'a'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          The service removeAll has been replaced by "sub" in order to have access to the operator "-" between to sets
-        </p>
-        <h4>In other languages</h4>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Language</th>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>Acceleo 3 (MTL)</td>
-              <td>OrderedSet{'a', 'b', 'c'}.removeAll(OrderedSet{'c', 'b', 'f'})</td>
-              <td>OrderedSet{'a'}</td>
             </tr>
           </tbody>
         </table>
@@ -1378,29 +1432,6 @@
         </p>
         <hr />
 
-        <h3>union(sequence1: java.util.List, sequence2: java.util.List) = List</h3>
-        <p>
-          Returns a sequence containing all the elements of the first and second sequences
-        </p>
-        <table class="table table-striped table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Expression</th>
-              <th>Result</th>
-            </tr>
-          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
-          <tbody>
-            <tr>
-              <td>Sequence{'a', 'b', 'c'}->union(Sequence{'d', 'c'})</td>
-              <td>Sequence{'a', 'b', 'c', 'd'}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          
-        </p>
-        <hr />
-
         <h3>union(set1: java.util.Set, set2: java.util.Set) = Set</h3>
         <p>
           Returns a set containing all the elements of the first and second sets
@@ -1416,6 +1447,29 @@
             <tr>
               <td>OrderedSet{'a', 'b', 'c'}->union(OrderedSet{'d', 'c'})</td>
               <td>OrderedSet{'a', 'b', 'c', 'd'}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          
+        </p>
+        <hr />
+
+        <h3>union(sequence1: java.util.List, sequence2: java.util.List) = List</h3>
+        <p>
+          Returns a sequence containing all the elements of the first and second sequences
+        </p>
+        <table class="table table-striped table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Result</th>
+            </tr>
+          </thead><colgroup><col width="60%" /><col width="40%" /></colgroup>
+          <tbody>
+            <tr>
+              <td>Sequence{'a', 'b', 'c'}->union(Sequence{'d', 'c'})</td>
+              <td>Sequence{'a', 'b', 'c', 'd'}</td>
             </tr>
           </tbody>
         </table>
