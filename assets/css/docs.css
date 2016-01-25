@@ -225,3 +225,7 @@ form.well {
   color: #468847;
   background-color: #DFF0D8;
 }
+
+code,pre {
+	color: #25587E;
+}
