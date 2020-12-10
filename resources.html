@@ -19,19 +19,32 @@
     <link rel="stylesheet" href="/acceleo/common_assets/css/styles.css">
     <link rel="stylesheet" href="/acceleo/common_assets/css/animate.css">
 
-    <link rel="canonical" href="/acceleo/acceleo/resources.html">
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Eclipse Foundation Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5WLCZXC');</script>
+        <!-- End Google Tag Manager -->  
+        
+        <!-- Eclipse Foundation cookie consent: -->
+        <link rel="stylesheet" type="text/css" href="//www.eclipse.org/eclipse.org-common/themes/solstice/public/stylesheets/vendor/cookieconsent/cookieconsent.min.css" />
+        <script src="//www.eclipse.org/eclipse.org-common/themes/solstice/public/javascript/vendor/cookieconsent/default.min.js"></script>  
+        
+        <script src="/acceleo/assets/js/ga.js"></script>
+
     <!-- Old version of font awesome for some icons -->
     <script src="https://use.fontawesome.com/b51f77a16a.js"></script>    
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     
-    <script type="text/javascript">
+    <script>
         jQuery(function($){ $(".hasTooltip").tooltip({"html": true,"container": "body"}); });
     </script>
     <!-- Triggers tooltips -->
-    <script type="text/javascript">
+    <script>
         jQuery(document).ready(function() {
             jQuery('.hasTooltip').tooltip();
         });
@@ -81,13 +94,13 @@
     <div class="container">
       
         <div class="row">
-            <div class="col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="300ms" data-wow-delay="0ms">
+            <div class="col-sm-4 col-xs-12 wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="0ms">
                 <div><i class="fas fa-play-circle fa-3x pa2 txt_indigo" aria-hidden="true"></i></div>
                 <h4>Tutorials</h4>
                 <p><a data-wow-delay=".1s" href="https://wiki.eclipse.org/Acceleo/Getting_Started" target="_blank">Create your First Acceleo Generator <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
                 <p><a data-wow-delay=".2s" href="https://wiki.eclipse.org/Acceleo/Videos/TopcasedDays2011" target="_blank">Android code generation <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
             </div>
-            <div class="col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="300ms" data-wow-delay="0ms">
+            <div class="col-sm-4 col-xs-12 wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="0ms">
                 <div><i class="fas fa-file-alt fa-3x pa2 txt_indigo" aria-hidden="true"></i></div>
                 <h4>Documentation</h4>
                 <p><a href="http://help.eclipse.org/photon/index.jsp?topic=/org.eclipse.acceleo.doc/pages/index.html" target="_blank">
@@ -99,7 +112,7 @@
                 <p><a href="https://wiki.eclipse.org/Acceleo" target="_blank">Acceleo Wiki <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
             </div>
             
-            <div class="col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="300ms" data-wow-delay="100ms">
+            <div class="col-sm-4 col-xs-12 wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="100ms">
                 <div><i class="fas fa-folder-open fa-3x pa2 txt_indigo" aria-hidden="true"></i></div>
                 <h4>Developers Resources</h4>
                 <p><a href="https://projects.eclipse.org/projects/modeling.acceleo" target="_blank">About this project <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
@@ -119,13 +132,14 @@
 
 <section class="bg_lightest_grey text-center">
     <div class="container">
-        <h2 class="title wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay=".2s">Contribute</h2> 
-<h3 class="wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay=".3s"></h3>
-<p class="wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay=".4s">Acceleo is actively looking for project contributors. <br><br>There are many official and unofficial ways
+        <h2 class="title wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".2s">Contribute</h2> 
+<h3 class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s"></h3>
+<p class="wow fadeInDown" data-wow-duration="500ms" data-w ow-delay=".4s">Acceleo is actively looking for project contributors. <br><br>There are many official and unofficial ways
                     to get involved. <br>Please see <a href='http://wiki.eclipse.org/Acceleo/Wishlist' target='_blank'>this wiki page</a> for some
                     ideas, and <a href='http://wiki.eclipse.org/Setting_up_a_development_environment_for_Acceleo' target='_blank'>
                     this one</a> for information on how to set up your development environment.
                 </p>
+
 
 
     </div>       
@@ -136,19 +150,19 @@
       <div class="row">    
         
 <div class="col-md-3">
-    <p><a href="http://www.eclipse.org/"><img src="/acceleo/common_assets/images/logos/logo-eclipse-foundation.png" alt="Eclipse Foundation logo"></a></p>
-    <p id="copyright">Copyright © 2019 Eclipse Foundation, Inc.<br>All Rights Reserved.</p>
+    <p><a href="http://www.eclipse.org/"  target="_blank"><img src="/acceleo/common_assets/images/logos/logo-eclipse-foundation.png" alt="Eclipse Foundation logo"></a></p>
+    <p id="copyright">Copyright © 2020 Eclipse Foundation, Inc.<br>All Rights Reserved.</p>
 </div>
 
 <div class="col-md-3">
     <h6>Eclipse Foundation</h6>
     <ul>
-        <li><a href="http://www.eclipse.org/legal/privacy.php">Privacy Policy</a></li>
-        <li><a href="http://eclipse.org/">Eclipse</a></li>
-        <li><a href="http://www.eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
-        <li><a href="http://www.eclipse.org/legal/copyright.php">Copyright Agent</a></li>
-        <li><a href="http://www.eclipse.org/legal/">Legal</a></li>
-        <li><a href="http://www.eclipse.org/org/foundation/contact.php"> Contact Us</a></li>
+        <li><a href="http://www.eclipse.org/legal/privacy.php" target="_blank">Privacy Policy</a></li>
+        <li><a href="http://eclipse.org/" target="_blank">Eclipse</a></li>
+        <li><a href="http://www.eclipse.org/legal/termsofuse.php" target="_blank">Terms of Use</a></li>
+        <li><a href="http://www.eclipse.org/legal/copyright.php" target="_blank">Copyright Agent</a></li>
+        <li><a href="http://www.eclipse.org/legal/" target="_blank">Legal</a></li>
+        <li><a href="http://www.eclipse.org/org/foundation/contact.php" target="_blank"> Contact Us</a></li>
     </ul>
 </div>
 
@@ -156,11 +170,11 @@
 <div class="col-md-3">
     <h6>Project Links</h6>
     <ul>
-        <li><a href="https://projects.eclipse.org/projects/modeling.m2t.acceleo">About this project</a></li>
-        <li><a href="http://wiki.eclipse.org/Acceleo">Wiki</a></li>
-        <li><a href="https://www.eclipse.org/forums/index.php?t=thread&frm_id=24&">Forum</a></li>
-        <li><a href="https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=VERIFIED&list_id=9161179&product=Acceleo&query_format=advanced">Bugs</a></li>
-        <li><a href="https://projects.eclipse.org/projects/modeling.m2t.acceleo/developer">Source Code</a></li>
+        <li><a href="https://projects.eclipse.org/projects/modeling.m2t.acceleo" target="_blank">About this project</a></li>
+        <li><a href="http://wiki.eclipse.org/Acceleo" target="_blank">Wiki</a></li>
+        <li><a href="https://www.eclipse.org/forums/index.php?t=thread&frm_id=24&" target="_blank">Forum</a></li>
+        <li><a href="https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=VERIFIED&list_id=9161179&product=Acceleo&query_format=advanced" target="_blank">Bugs</a></li>
+        <li><a href="https://projects.eclipse.org/projects/modeling.m2t.acceleo/developer" target="_blank">Source Code</a></li>
     </ul>
 </div>
     </div>
